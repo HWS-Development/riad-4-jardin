@@ -1,198 +1,23 @@
 {
-  "nav":{"home":"Accueil","rooms":"Chambres","services":"Services","gallery":"Galerie","contact":"Contact"},
-  "hero":{
-    "title":"Vivez la quiétude à la Maison Daouia",
-    "subtitle":"Découvrez le charme et le confort marocains dans un riad paisible au cœur de Marrakech",
-    "book":"Réserver"
+  "nav": {
+    "menu": "Menu",
+    "home": "Accueil",
+    "rooms": "Chambres",
+    "spa": "Spa & Bien-être",
+    "services": "Services & Activités",
+    "restaurant": "Restaurant",
+    "gallery": "Galerie",
+    "blog": "Blog",
+    "book": "Reservez"
   },
-  "about":{
-    "title":"MAISON DAOUIA",
-    "p1":"Découvrez Marrakech, ville aux multiples couleurs et sa féerie grâce à ses monuments historiques, témoins d’un glorieux passé. Plongez-vous dans l’atmosphère accueillante et chaleureuse de ses habitants, réputés pour leur amabilité et leur sens unique de l’hospitalité.",
-    "p2":"Découvrez Marrakech, ville aux multiples couleurs et sa féerie grâce à ses monuments historiques, témoins d’un glorieux passé. Plongez-vous dans l’atmosphère accueillante et chaleureuse de ses habitants, réputés pour leur amabilité et leur sens unique de l’hospitalité."
+  "footer": {
+    "contact": "Contact",
+    "emailPH": "Entrez votre e-mail valide",
+    "newsletterBtn": "Réservez votre séjour maintenant"
   },
-  "services":{
-    "title":"Découvrez tout ce que la Maison Daouia peut vous offrir",
-    "subtitle":"Vivez le charme marocain grâce à nos services d’exception, conçus pour votre confort et votre détente.",
-    "food":{"title":"Saveurs du Maroc","desc":"Nous vous invitons à un voyage gustatif à travers les délices de la cuisine marocaine.","button":"Voir notre menu"},
-    "bar":{"title":"Notre Bar","desc":"Pendant votre séjour, profitez d’un moment de détente dans notre bar traditionnel.","button":"Découvrir notre carte"},
-    "spa":{"title":"Hammam & Spa","desc":"Offrez-vous un instant de relaxation dans notre hammam traditionnel et notre espace bien-être.","button":"Voir notre carte Spa"},
-    "yoga":{"title":"Yoga","desc":"Retrouvez équilibre et sérénité grâce à nos séances de yoga, adaptées à tous les niveaux.","button":"Contactez-nous"}
-  },
-  "testimonials":{"title":"Avis de nos clients","subtitle":"Découvrez ce que nos clients pensent de nos services"},
-  "location":{"title":"Notre Localisation","desc":"Découvrez la sérénité de la Maison Daouia, une maison d’hôtes paisible près de Marrakech, alliant charme marocain et confort dans un cadre champêtre."},
-  "footer":{"about":"Découvrez la quiétude dans notre havre de charme marocain.","contact":"Contact","rights":"Tous droits réservés.","madeby":"développé par"},
-  "roomsPage": {
-    "title": "Chambres & Suites",
-    "subtitle": "Choisissez l’espace qui correspond à votre séjour",
-    "items": {
-      "deluxe-terre": {
-        "title": "DELUXE - TERRE",
-        "meta": "SUPERFICIE: 15m² | CAPACITÉ MAX: 2",
-        "beds": "Chambre non-fumeur | Lit Queen-size",
-        "desc": "Chambre de 15 m² pour 1 ou 2 personnes, équipée d’un lit queen-size ou de lits twin. Son mobilier traditionnel, ses lumières tamisées et ses grandes fenêtres font de la chambre Deluxe à tout pour plaire. Lumineuse et très spacieuse, elle est un havre de paix. Ses couleurs dessinent une ambiance chaleureuse et conviviale."
-      },
-      "suite-voyageur-riviere": {
-        "title": "SUITE VOYAGEUR - RIVIÈRE",
-        "meta": "SUPERFICIE: 25–30m² | CAPACITÉ MAX: 3",
-        "beds": "Chambre non-fumeur | Lit double ou 2 lits simples",
-        "desc": "Suite de 25–30 m² pour 1, 2 ou 3 personnes, équipée d’un lit king size ou de lits twin. L’élégance, le confort, le calme : découvrez le sens de l’hospitalité marocaine. Chaque suite se distingue par sa décoration, son agencement, son histoire. Leur superficie exceptionnelle et parfaitement optimisée confère un bel espace de vie. Le mobilier traditionnel marquera votre séjour dans notre établissement. Les couleurs et les tissus choisis sont la marque de l’élégance marocaine."
-      },
-      "premium-lavande": {
-        "title": "PREMIUM - LAVANDE",
-        "meta": "SUPERFICIE: 25 m² | CAPACITÉ MAX: 2",
-        "beds": "Chambre non-fumeur | Lit Queen-size",
-        "desc": "Chambre de 25 m² pour 1 ou 2 personnes équipée d’un lit queen-size ou de lits twin. Élégance, sophistication, spacieuse, ces chambres déclinent un spectaculaire et savant assemblage de couleurs et de textures raffinées pour créer un environnement confortable et feutré."
-      },
-      "premium-foret": {
-        "title": "PREMIUM - FORÊT",
-        "meta": "SUPERFICIE: 25 m² | CAPACITÉ MAX: 2",
-        "beds": "Chambre non-fumeur | Lit double ou 2 lits simples",
-        "desc": "Chambre de 25 m² pour 1 ou 2 personnes équipée d’un lit queen-size ou de lits twin. Élégance, sophistication, spacieuse, ces chambres déclinent un savant assemblage de couleurs et de textures raffinées pour créer un environnement confortable et feutré."
-      },
-      "suite-voyageur-neige": {
-        "title": "SUITE VOYAGEUR - NEIGE",
-        "meta": "SUPERFICIE: 30 m² | CAPACITÉ MAX: 2",
-        "beds": "Chambre non-fumeur | Lit Queen-size",
-        "desc": "Suite de 25–30 m² pour 1 et 2 personnes, équipée d’un lit king size ou de lits twin. L’élégance, le confort, le calme : découvrez le sens de l’hospitalité marocaine. Chaque suite se distingue par sa décoration, son agencement, son histoire. Leur superficie exceptionnelle et parfaitement optimisée confère un bel espace de vie."
-      },
-      "suite-nomade-champs": {
-        "title": "SUITE NOMADE - CHAMPS",
-        "meta": "SUPERFICIE: 36 m² | CAPACITÉ MAX: 4",
-        "beds": "Chambre non-fumeur | Lit double ou 2 lits simples",
-        "desc": "Suite Nomade de 36 m² pour 1 ou 4 personnes, équipée d’un lit king size ou de lits twin. L’élégance, le confort, le calme : découvrez le sens de l’hospitalité marocaine. Chaque suite se distingue par sa décoration, son agencement, son histoire. Leur superficie exceptionnelle offre un bel espace de vie. Vous pourrez alors vous sentir à Marrakech comme chez vous. Une marguerite à l’allure très nomade apporte de l’originalité et la touche marocaine de ces chambres. Ce décor prolonge le cachet de la ville. Dans cette ambiance chaleureuse, vous passerez un excellent moment."
-      },
-      "suite-nomade-fruits": {
-        "title": "SUITE NOMADE - FRUITS",
-        "meta": "SUPERFICIE: 35 m² | CAPACITÉ MAX: 4",
-        "beds": "Chambre non-fumeur | Lit Queen-size",
-        "desc": "Suite Nomade de 35 m² pour 1 ou 4 personnes, équipée d’un lit king size ou de lits twin. L’élégance, le confort, le calme : découvrez le sens de l’hospitalité marocaine. Chaque suite se distingue par sa décoration, son agencement, son histoire. Leur superficie exceptionnelle et parfaitement optimisée confère un bel espace de vie. Vous pourrez alors vous sentir à Marrakech comme chez vous. Une marguerite à l’allure très nomade, apporte de l’originalité et la touche marocaine de ces chambres. Ce décor prolonge le cachet de la ville. Dans cette ambiance chaleureuse, vous passerez un excellent moment."
-      }
-    }
-  },
-  "servicesPage": {
-    "title": "Nos Services",
-    "subtitle": "Découvrez une variété de services de qualité dans notre établissement, avec plusieurs espaces dédiés à la détente pour assurer votre confort.",
-    "hammam": {
-      "title": "Expérience de hammam relaxante",
-      "desc": "Offrez-vous un moment de bien-être dans notre hammam traditionnel et nos espaces dédiés à la détente. Dans une atmosphère apaisante, profitez d’une expérience relaxante qui associe confort et authenticité marocaine.",
-      "button": "Voir notre carte Spa"
-    },
-    "food": {
-      "title": "Les saveurs du Maroc",
-      "desc": "Notre restaurant vous propose un voyage gustatif à travers les délices de la cuisine marocaine. Afin de garantir une cuisine saine et authentique, tous nos plats sont préparés avec des produits de saison provenant des marchés des producteurs locaux.",
-      "button": "Voir notre menu"
-    },
-    "Conciergerie": {
-      "title": "Conciergerie",
-      "desc": "Nous offrons des services d'accueil personnalisés à l'aéroport, ainsi que des transferts en véhicule privé de luxe. Profitez d'activités culturelles et sportives sur mesure : excursions privées avec guide, visites de palais et musées, trekkings hors des sentiers touristiques… pour créer des moments d’évasion inoubliables selon vos préférences.",
-      "button": "Contactez-nous"
-    },
-    "pool": {
-      "title": "Piscine & Rooftop",
-      "desc": "Avec ses espaces extérieurs bien aménagés et sa position privilégiée, éloignée de l'agitation citadine, la Maison Daouia offre un environnement idéal pour se ressourcer. Vous pourrez profiter de moments de tranquillité au bord de la piscine, ou vous détendre sur la terrasse, confortablement installé sur des coussins et des tapis berbères.",
-      "button": "Contactez-nous"
-    }
-  },
-  "galleryPage": {
-    "hero_title": "Notre Galerie",
-    "hero_ubtitle": "Souvenirs à la Maison Daouia",
-    "title": "Galerie",
-    "subtitle": "Plongez dans l’univers authentique de la Maison Daouia à travers nos images."
-  },
-  "galleryTranquility": {
-    "title": "Découvrez la tranquillité de la Maison Daouia",
-    "col1": {
-      "heading": "Un havre de paix",
-      "body": "La Maison Daouia est nichée près de Marrakech, dans un cadre champêtre où se marient charme marocain et confort moderne. Une décoration raffinée et une atmosphère paisible vous promettent un séjour inoubliable."
-    },
-    "col2": {
-      "heading": "L’art de l’hospitalité marocaine",
-      "body": "Entre piscine ensoleillée, terrasses conviviales, cuisine traditionnelle et hammam apaisant, chaque espace reflète l’authenticité et l’accueil chaleureux qui caractérisent notre maison d’hôtes."
-    },
-    "imgAlt": "Piscine de la Maison Daouia"
-  },
-  "contact": {
-    "title": "Contactez-nous",
-    "subtitle": "Pour toute information ou demande concernant notre expérience de riad paisible, n'hésitez pas à nous contacter.",
-    "subject": "Demande via le formulaire du site",
-    "form": {
-      "name": "Votre nom",
-      "email": "Votre adresse e-mail",
-      "message": "Votre message"
-    },
-    "placeholder": {
-      "name": "Entrer votre Nom",
-      "email": "Entrer votre adresse e-mail",
-      "message": "…."
-    },
-    "submit": "Envoyer ma demande"
-  },
-  "terms": {
-    "title": "Conditions Générales de Vente",
-    "subtitle": "Conditions Générales de Vente – Maison Daouia",
-    "s1": {
-      "title": "Identification de l’établissement :",
-      "p1": "Maison Daouia est la marque commerciale de la société ORENIM SARL, immatriculée au Registre du Commerce de Marrakech sous le numéro de patente 120057, IF 5062406, dont le siège social est sis Douar Ouled el Game MrhamaÂl Al Oudaine, Marrakech – Maroc. Maison Daouia est classée établissement de première catégorie sous le N° 174/2010 du 26 novembre 2011.",
-      "site": "Site internet :",
-      "p2tail": "— Plateforme de réservation sécurisée, reliée au Centre Monétique Interbancaire (CMI) conformément à la réglementation marocaine."
-    },
-    "s2": {
-      "title": "Objet:",
-      "p1": "Les présentes Conditions Générales définissent les modalités de réservation, d’hébergement et de séjour au sein de Maison Daouia, dans le respect de la réglementation marocaine applicable aux établissements touristiques."
-    },
-    "s3": {
-      "title": "Réservation et Paiement:",
-      "p1": "Toute réservation est considérée comme ferme et définitive dès confirmation et paiement de l’acompte. Le montant de l’acompte et le solde sont indiqués lors de la réservation. Les factures sont établies au nom du client ou de la personne morale ayant pris en charge la réservation. Les moyens de paiement acceptés sont précisés sur le site et/ou par la réception.",
-      "warn1": "Attention : Pour les couples marocains, la présentation d’un acte de mariage est obligatoire pour partager une chambre (conformément à la réglementation en vigueur au Maroc)."
-    },
-    "s4": {
-      "title": "Formalités d’entrée:",
-      "p1": "À l’arrivée, chaque client doit présenter une pièce d’identité valide (passeport ou CIN). Une fiche individuelle de police sera remplie conformément à la loi marocaine.",
-      "p2": "À titre d’accueil, une bouteille d’eau et des pâtisseries orientales sont offertes à l’arrivée."
-    },
-    "s5": {
-      "title": "Conditions d’annulation et de modification:",
-      "p1": "Plus de 30 jours avant la date d’arrivée : 0 % du montant.",
-      "p2": "De 30 jours à 15 jours avant l’arrivée : 50 % du montant net.",
-      "p3": "Moins de 15 jours avant l’arrivée ou en cas de non-présentation : 100 % du montant net.",
-      "warn1": "L’acompte n’est pas remboursable.",
-      "warn2": "En cas d’interruption de séjour, le montant total reste dû."
-    },
-    "s6": {
-      "title": "Mise à disposition et départ :",
-      "p1": "Les chambres sont disponibles à partir de 15h le jour d’arrivée. Elles doivent être libérées avant 11h le jour du départ. Tout dépassement pourra entraîner la facturation d’une nuit supplémentaire. La chambre est prévue pour un nombre déterminé de personnes ; l’hébergement de personnes supplémentaires est interdit pour des raisons de sécurité."
-    },
-    "s7": {
-      "title": "Obligations du client:",
-      "b1": "Le client s’engage à :",
-      "b2": "- Respecter les règles de vie et de tranquillité des lieux (notamment entre 22h et 8h).",
-      "b3": "- Ne pas exercer d’activité lucrative ou de domiciliation au sein de l’établissement.",
-      "b4": "- Surveiller ses enfants, notamment à la piscine, en l’absence de protections spécifiques.",
-      "warn1": "Avoir un comportement respectueux vis-à-vis du personnel, des autres clients et des us et coutumes locales. Tout manquement grave pourra entraîner la résiliation du contrat sans remboursement."
-    },
-    "s8": {
-      "title": "Responsabilité:",
-      "p1": "Maison Daouia ne saurait être tenue responsable des vols ou dégradations d’effets personnels, y compris dans les espaces communs. La responsabilité de l’établissement ne peut être engagée en cas de force majeure ou de désagréments liés à des coupures d’eau, d’électricité, de téléphone ou d’internet."
-    },
-    "s9": {
-      "title": "Assurance:",
-      "p1": "Maison Daouia est couverte par une assurance responsabilité civile professionnelle conformément à la réglementation marocaine."
-    },
-    "s10": {
-      "title": "Services inclus et options :",
-      "p1": "Le petit-déjeuner est servi entre 8h et 10h, sans service en chambre. Les prestations annexes (spa, repas, excursions, etc.) sont facturées en supplément. L’établissement se réserve le droit d’accéder aux chambres pour entretien et vérification."
-    },
-    "s11": {
-      "title": "Visiteurs:",
-      "p1": "Les visites sont soumises à l’accord préalable de la direction. Les visiteurs doivent décliner leur identité."
-    },
-    "s12": {
-      "title": "Protection des données :",
-      "p1": "Les données collectées lors de la réservation sont utilisées uniquement dans le cadre de l’exécution des prestations et conformément à la réglementation marocaine sur la protection des données personnelles."
-    },
-    "s13": {
-      "title": "Litiges et droit applicable:",
-      "p1": "Les présentes conditions sont régies par le droit marocain. En cas de litige, seul le tribunal de Marrakech sera compétent."
-    }
+  "hero": {
+    "title": "Réservez votre séjour",
+    "subtitle": "Découvrez l’élégance et l’authenticité de notre riad à Marrakech. Réservez votre chambre dès maintenant.",
+    "cta": "Reservez"
   }
 }
