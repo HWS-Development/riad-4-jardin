@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_white_transparent-YanJ4l86raHEGQwp.webp?v=3">
+    <link rel="apple-touch-icon" href="/images/logo_white_transparent-YanJ4l86raHEGQwp.webp?v=3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Maison Daouia</title>
+    <script type="application/ld+json">
+      {
+       "@context":"https://schema.org",
+       "@type":"LodgingBusiness",
+       "name":"Maison Daouia",
+       "address":{"@type":"PostalAddress","streetAddress":"14 derb Gnaoua, quartier Ben Saleh","addressLocality":"Marrakech","addressCountry":"MA"},
+       "telephone":"+212 663 43 41 44",
+       "image":["/images/hero.webp"],
+       "amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Wi-Fi","value":true}]
+      }
+      </script>
+      <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const pageLang = (document.documentElement.lang || "fr").toLowerCase();
+
+    /* -------------------------
+       WhatsApp Floating Button
+    ------------------------- */
+    if (!document.querySelector(".whatsapp-float")) {
+      const btn = document.createElement("div");
+      btn.className = "whatsapp-float";
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+      btn.onclick = function () {
+        window.open("https://wa.me/212666915556", "_blank");
+      };
+      document.body.appendChild(btn);
+
+      /* WhatsApp Tooltip */
+      const tooltip = document.createElement("div");
+      tooltip.className = "whatsapp-tooltip";
+
+      let tooltipMsg = "Bienvenue à Maison Daouia, comment pouvons-nous vous aider ?";
+      if (pageLang.startsWith("en")) {
+        tooltipMsg = "Welcome to Maison Daouia, how can we help you?";
+      } else if (pageLang.startsWith("es")) {
+        tooltipMsg = "Bienvenido a Maison Daouia, ¿cómo podemos ayudarle?";
+      }
+      tooltip.innerText = tooltipMsg;
+      document.body.appendChild(tooltip);
+
+      setTimeout(() => tooltip.classList.add("show"), 1000);
+      setTimeout(() => tooltip.classList.remove("show"), 6000);
+    }
+
+    /* -------------------------
+       MGH Direct Booking Badge
+    ------------------------- */
+    if (!document.querySelector("#mgh-badge")) {
+      const badge = document.createElement("a");
+      badge.href = "https://maison-daouia.hotelrunner.com/bv3/search";
+      badge.target = "_blank";
+      badge.id = "mgh-badge";
+
+      const img = document.createElement("img");
+      if (pageLang.startsWith("en")) {
+        img.src = "https://assets.zyrosite.com/Yg2yZnylKXu6kny3/chatgpt-image-sep-29-2025-11_06_13-am-mP43nRnDBnHD2O4P.png";
+        img.alt = "Book direct, best price";
+        img.title = "Book direct, best price";
+      } else {
+        img.src = "https://assets.zyrosite.com/Yg2yZnylKXu6kny3/chatgpt-image-sep-29-2025-11_04_37-am-YyvD38oMWXtzME1K.png";
+        img.alt = "Réservez en direct, meilleur prix";
+        img.title = "Réservez en direct, meilleur prix";
+      }
+
+      badge.appendChild(img);
+      document.body.appendChild(badge);
+    }
+  });
+</script>
+<!-- FontAwesome for WhatsApp Icon --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* WhatsApp Button */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #879b61;
+    color: white;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 9999;
+  }
+  .whatsapp-tooltip {
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    background: #879b61;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .whatsapp-tooltip.show {
+    opacity: 1;
+  }
+
+  /* Badge */
+  #mgh-badge {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    width: 100px;
+    cursor: pointer;
+  }
+  #mgh-badge img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Smaller on mobile */
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+    #mgh-badge {
+      width: 80px;
+    }
+  }
+</style>
+
+
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

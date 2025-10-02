@@ -1,0 +1,198 @@
+{
+  "nav":{"home":"Home","rooms":"Rooms","services":"Services","gallery":"Gallery","contact":"Contact"},
+  "hero":{
+    "title":"Experience tranquility at Maison Daouia",
+    "subtitle":"Discover the charm and Moroccan comfort in a peaceful riad in the heart of Marrakech",
+    "book":"Book Now"
+  },
+  "about":{
+    "title":"MAISON DAOUIA",
+    "p1":"Discover Marrakech, a city of vibrant colors and enchanting history through its monuments that testify to a glorious past. Immerse yourself in the warm, welcoming atmosphere of its residents, renowned for their kindness and unique sense of hospitality.",
+    "p2":"Discover Marrakech, a city of vibrant colors and enchanting history through its monuments that testify to a glorious past. Immerse yourself in the warm, welcoming atmosphere of its residents, renowned for their kindness and unique sense of hospitality."
+  },
+  "services":{
+    "title":"Discover everything Maison Daouia has to offer",
+    "subtitle":"Experience Moroccan charm through our exceptional services, designed for your comfort and relaxation.",
+    "food":{"title":"Flavors of Morocco","desc":"Join us on a culinary journey through the delights of Moroccan cuisine.","button":"See our menu"},
+    "bar":{"title":"Our Bar","desc":"During your stay, enjoy moments of relaxation in our traditional bar.","button":"Discover our menu"},
+    "spa":{"title":"Hammam & Spa","desc":"Indulge in a moment of relaxation in our traditional hammam and wellness area.","button":"See Spa menu"},
+    "yoga":{"title":"Yoga","desc":"Find balance and serenity through our yoga sessions, suitable for all levels.","button":"Contact us"}
+  },
+  "testimonials":{"title":"Our Guests’ Reviews","subtitle":"Discover what our guests think of our services"},
+  "location":{"title":"Our Location","desc":"Find serenity at Maison Daouia, a peaceful guesthouse near Marrakech combining Moroccan charm and comfort in a countryside setting."},
+  "footer":{"about":"Discover tranquility in our charming Moroccan hideaway.","contact":"Contact","rights":"All rights reserved.","madeby":"Developed by"},
+  "roomsPage": {
+    "title": "Rooms & Suites",
+    "subtitle": "Choose the space that fits your stay.",
+    "items": {
+      "deluxe-terre": {
+        "title": "DELUXE - TERRE",
+        "meta": "SIZE: 15 m² | MAX CAPACITY: 2",
+        "beds": "Non-smoking room | Queen-size bed",
+        "desc": "15 m² room for 1 or 2 guests with a queen-size bed or twin configuration. Traditional furniture, soft lighting and large windows make the Deluxe room a bright, spacious haven of peace, with warm and friendly colors."
+      },
+      "suite-voyageur-riviere": {
+        "title": "VOYAGEUR SUITE – RIVIÈRE",
+        "meta": "SIZE: 25–30 m² | MAX CAPACITY: 3",
+        "beds": "Non-smoking room | Double bed or two single beds",
+        "desc": "25–30 m² suite for 1–3 guests with a king-size bed or twin beds. Elegance, comfort and calm: discover Moroccan hospitality. Each suite stands out through its décor, layout and story. With generous, well-optimized space, traditional furniture and refined fabrics, it offers a truly relaxing stay."
+      },
+      "premium-lavande": {
+        "title": "PREMIUM – LAVENDER",
+        "meta": "SIZE: 25 m² | MAX CAPACITY: 2",
+        "beds": "Non-smoking room | Queen-size bed",
+        "desc": "25 m² room for 1 or 2 guests with a queen-size bed or twin option. Elegant and spacious, with a tasteful combination of colors and refined textures to create a cozy, comfortable atmosphere."
+      },
+      "premium-foret": {
+        "title": "PREMIUM – FOREST",
+        "meta": "SIZE: 25 m² | MAX CAPACITY: 2",
+        "beds": "Non-smoking room | Double bed or two single beds",
+        "desc": "25 m² room for 1 or 2 guests with queen-size or twin beds. Elegant and spacious, featuring a refined palette of colors and textures for a comfortable, hushed ambiance."
+      },
+      "suite-voyageur-neige": {
+        "title": "VOYAGEUR SUITE – NEIGE",
+        "meta": "SIZE: 30 m² | MAX CAPACITY: 2",
+        "beds": "Non-smoking room | Queen-size bed",
+        "desc": "25–30 m² suite for up to 2 guests with a king-size bed or twin beds. The generous space, traditional furniture and calm atmosphere make it ideal for a relaxing stay."
+      },
+      "suite-nomade-champs": {
+        "title": "NOMADE SUITE – CHAMPS",
+        "meta": "SIZE: 36 m² | MAX CAPACITY: 4",
+        "beds": "Non-smoking room | Double bed or two single beds",
+        "desc": "36 m² Nomade Suite for up to 4 guests with a king or twin beds. A generous, well-designed space with a distinct Moroccan character. The décor extends the spirit of Marrakech and creates a warm, welcoming ambiance."
+      },
+      "suite-nomade-fruits": {
+        "title": "NOMADE SUITE – FRUITS",
+        "meta": "SIZE: 35 m² | MAX CAPACITY: 4",
+        "beds": "Non-smoking room | Queen-size bed",
+        "desc": "35 m² Nomade Suite for up to 4 guests with a king or twin beds. Spacious and optimized, with colorful, refined décor that adds a distinctive Moroccan touch for a warm, memorable stay."
+      }
+    }
+  },
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Discover a variety of quality services at our property, with several dedicated relaxation areas to ensure your comfort.",
+    "hammam": {
+      "title": "Relaxing Hammam Experience",
+      "desc": "Treat yourself to a moment of well-being in our traditional hammam and dedicated relaxation areas. In a soothing atmosphere, enjoy a relaxing experience that combines comfort with authentic Moroccan heritage.",
+      "button": "See Spa menu"
+    },
+    "food": {
+      "title": "Flavors of Morocco",
+      "desc": "Our restaurant invites you on a culinary journey through the delights of Moroccan cuisine. To ensure healthy and authentic dishes, everything is prepared with seasonal produce sourced from local markets and producers.",
+      "button": "See our menu"
+    },
+    "Conciergerie": {
+      "title": "Conciergerie",
+      "desc": "We offer personalised airport pick-up services and transfers in luxury private vehicles. Enjoy tailor-made cultural and sporting activities, such as private guided excursions, visits to Marrakech’s palaces and museums, and trekking off the tourist trail — creating unforgettable moments of escape to suit your preferences.",
+      "button": "Contact us"
+    },
+    "pool": {
+      "title": "Swimming Pool & Rooftop",
+      "desc": "With its well-appointed outdoor spaces and privileged position, far from the hustle and bustle of the city, Maison Daouia offers an ideal environment in which to recharge your batteries. You can enjoy moments of tranquillity by the pool, or relax on the terrace, comfortably installed on cushions and Berber rugs.",
+      "button": "Contact us"
+    }
+  },
+  "galleryPage": {
+    "hero_title": "Our Gallery",
+    "hero_ubtitle": "Moments at Maison Daouia",
+    "title": "Gallery",
+    "subtitle": "Dive into Maison Daouia’s authentic atmosphere through our images."
+  },
+  "galleryTranquility": {
+    "title": "Discover the tranquility of Maison Daouia",
+    "col1": {
+      "heading": "A haven of peace",
+      "body": "Maison Daouia is nestled near Marrakech in a countryside setting where Moroccan charm meets modern comfort. Refined décor and a peaceful atmosphere promise an unforgettable stay."
+    },
+    "col2": {
+      "heading": "The art of Moroccan hospitality",
+      "body": "From the sun-kissed pool and friendly terraces to traditional cuisine and a soothing hammam, every space reflects the authenticity and warm welcome that define our guest house."
+    },
+    "imgAlt": "Maison Daouia pool"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Reach out for inquiries about our peaceful riad experience.",
+    "subject": "Request from website form",
+    "form": {
+      "name": "Your name",
+      "email": "Your e-mail address",
+      "message": "Your message"
+    },
+    "placeholder": {
+      "name": "Enter your name",
+      "email": "Enter your e-mail address",
+      "message": "…."
+    },
+    "submit": "Send my request"
+  },
+  "terms": {
+    "title": "General Terms and Conditions",
+    "subtitle": "General Terms and Conditions – Maison Daouia",
+    "s1": {
+      "title": "Property identification:",
+      "p1": "Maison Daouia is the trade name of ORENIM SARL, registered with the Commercial Registry of Marrakech, tax license no. 120057, IF 5062406, with its head office at Douar Ouled el Game MrhamaÂl Al Oudaine, Marrakech – Morocco. Maison Daouia is classified as a first-category establishment under No. 174/2010 dated 26 November 2011.",
+      "site": "Website:",
+      "p2tail": "— Secure booking platform connected to the Interbank Monetary Center (CMI) in accordance with Moroccan regulations."
+    },
+    "s2": {
+      "title": "Purpose:",
+      "p1": "These General Terms define the conditions for booking, accommodation and stay at Maison Daouia, in compliance with Moroccan regulations applicable to tourist establishments."
+    },
+    "s3": {
+      "title": "Booking and payment:",
+      "p1": "Any reservation is deemed firm and final upon confirmation and payment of the deposit. The amount of the deposit and the balance is indicated at the time of booking. Invoices are issued in the name of the guest or legal entity responsible for the booking. Accepted means of payment are specified on the site and/or by reception.",
+      "warn1": "Attention: for Moroccan couples, a marriage certificate is mandatory to share a room (as required by Moroccan law)."
+    },
+    "s4": {
+      "title": "Check-in formalities:",
+      "p1": "Upon arrival, each guest must present valid ID (passport or CIN). A police registration form will be completed as required by Moroccan law.",
+      "p2": "As a welcome, a bottle of water and oriental pastries are offered on arrival."
+    },
+    "s5": {
+      "title": "Cancellation and modification policy:",
+      "p1": "More than 30 days before arrival: 0% of the amount.",
+      "p2": "From 30 to 15 days before arrival: 50% of the net amount.",
+      "p3": "Less than 15 days before arrival or no-show: 100% of the net amount.",
+      "warn1": "The deposit is non-refundable.",
+      "warn2": "In case of early departure, the total amount remains due."
+    },
+    "s6": {
+      "title": "Availability and check-out:",
+      "p1": "Rooms are available from 3:00 pm on the day of arrival and must be vacated by 11:00 am on the day of departure. Any overrun may result in an extra night being charged. Rooms are intended for a set number of guests; accommodating additional persons is prohibited for safety reasons."
+    },
+    "s7": {
+      "title": "Guest obligations:",
+      "b1": "The guest agrees to:",
+      "b2": "- Respect the rules of quiet enjoyment of the premises (especially between 10 pm and 8 am).",
+      "b3": "- Refrain from any lucrative activity or business domicile within the property.",
+      "b4": "- Supervise children, particularly at the pool, in the absence of specific protections.",
+      "warn1": "Behave respectfully towards staff, other guests, and local customs. Any serious misconduct may lead to termination of the contract without refund."
+    },
+    "s8": {
+      "title": "Liability:",
+      "p1": "Maison Daouia cannot be held responsible for theft or damage to personal belongings, including in common areas. The establishment’s liability cannot be engaged in cases of force majeure or inconveniences related to interruptions of water, electricity, telephone or internet."
+    },
+    "s9": {
+      "title": "Insurance:",
+      "p1": "Maison Daouia is covered by professional civil liability insurance in accordance with Moroccan regulations."
+    },
+    "s10": {
+      "title": "Included services and options:",
+      "p1": "Breakfast is served between 8:00 am and 10:00 am, with no room service. Additional services (spa, meals, excursions, etc.) are charged extra. The establishment reserves the right to access rooms for maintenance and inspection."
+    },
+    "s11": {
+      "title": "Visitors:",
+      "p1": "Visits are subject to prior approval by management. Visitors must provide identification."
+    },
+    "s12": {
+      "title": "Data protection:",
+      "p1": "Data collected during booking is used solely for the performance of services and in compliance with Moroccan personal data protection regulations."
+    },
+    "s13": {
+      "title": "Disputes and governing law:",
+      "p1": "These terms are governed by Moroccan law. In the event of a dispute, the courts of Marrakech shall have sole jurisdiction."
+    }
+  }
+}
