@@ -1,47 +1,25 @@
-import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home.jsx";
+import Rooms from "./pages/Rooms.jsx";
+import Spa from "./pages/Spa.jsx";
+import Services from "./pages/Services.jsx";
+import Restaurant from "./pages/Restaurant.jsx";
+import Gallery from "./pages/Gallery.jsx";
+
 
 export default function App() {
-  useEffect(() => {
-    window.location.replace("https://riad4jardin-com-358766.builder-preview.com/");
-  }, []);
-
-  return null; // nothing will render, it will redirect immediately
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/chambres" element={<Rooms />} />
+        <Route path="/spa" element={<Spa />} />
+        <Route path="/services-activites" element={<Services />} />
+        <Route path="/restaurant" element={<Restaurant />} />
+        <Route path="/galerie" element={<Gallery />} />
+    
+      </Routes>
+    </Layout>
+  );
 }
-
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-// import Header from "./components/layout/Header";
-// import Footer from "./components/layout/Footer";
-
-// import Home from "./pages/Home"
-// // import Rooms from "./pages/Rooms"
-// // import Services from "./pages/Services"
-// // import Gallery from "./pages/Gallery"
-// // import Contact from "./pages/Contact"
-// // import Terms from "./pages/Terms"
-
-// function App() {
-//   return (
-//     <Router>
-//       <div className="flex flex-col min-h-screen bg-lightBg">
-//       <Header
-//         logoSrc="/logo.svg" // replace with your logo path
-//         bookingUrl="https://your-hotelrunner-url.example.com/bv3/search"
-//       />
-//         <main className="flex-grow">
-//           <Routes>
-//             <Route path="/" element={<Home />} />
-//             {/* <Route path="/rooms" element={<Rooms />} />
-//             <Route path="/services" element={<Services />} />
-//             <Route path="/gallery" element={<Gallery />} />
-//             <Route path="/contact" element={<Contact />} />
-//             <Route path="/terms" element={<Terms />} /> */}
-//           </Routes>
-//         </main>
-//         <Footer />
-//       </div>
-//     </Router>
-//   )
-// }
-
-// export default App
-

@@ -1,28 +1,21 @@
-// tailwind.config.js (merge with yours)
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html","./src/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    container: { center: true, padding: "1rem" },
     extend: {
       colors: {
         brand: {
-          teal: "#173B45",      // header (scrolled) bar color, matches screenshot
-          gold: "#E9C15F",      // button
-          brown: "#6F6257",     // footer main bg
-          desert: "#E9D8C0",    // beige band
-          cream: "#F6ECD8",     // light separator
-          dark: "#1B1B1B",
+          gold: "#F2C75B",     // Accent principal (boutons, CTA)
+          teal: "#244752",     // Menu / titres
+          cream: "#F3E7D3",    // Sections claires
+          charcoal: "#1E1E1E", // Texte principal
+          forest: "#173C2F",   // Texte sur or / hover
         },
       },
       fontFamily: {
-        serif: ["Fraunces","ui-serif","Georgia","serif"],
-        sans: ["Inter","ui-sans-serif","system-ui","Arial"],
+        sans: ["Inter", "sans-serif"],       // Texte
+        serif: ["Fraunces", "serif"],        // Titres (style logo)
       },
-      borderRadius: { pill: "999px" },
-      boxShadow: {
-        dropdown: "0 12px 30px rgba(0,0,0,.22)",
-      },
-      maxWidth: { content: "1120px" },
     },
   },
   plugins: [],

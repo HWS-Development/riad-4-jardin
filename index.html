@@ -1,30 +1,113 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/vite.svg
-    <link rel="apple-touch-icon" href="/images/vite.svg
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="src/assets/logo-full.png" />
+    <title>Riad 4 Jardins</title>
 
-    <title>Maison Daouia</title>
-    <script type="application/ld+json">
-      {
-       "@context":"https://schema.org",
-       "@type":"LodgingBusiness",
-       "name":"Maison Daouia",
-       "address":{"@type":"PostalAddress","streetAddress":"14 derb Gnaoua, quartier Ben Saleh","addressLocality":"Marrakech","addressCountry":"MA"},
-       "telephone":"+212 663 43 41 44",
-       "image":["/images/hero.webp"],
-       "amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Wi-Fi","value":true}]
-      }
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+
+/>
+
+
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        // --- SETTINGS ---
+        const SHOW_DELAY_MS = 1500;                // wait before showing
+        const PRIMARY_HREF  = "#offres-speciales"; // scroll to section OR booking URL
+      
+        // --- Only run on homepage ---
+        if (!location.pathname.endsWith("/") && !location.pathname.endsWith("/index.html") && location.pathname !== "") {
+          return; // exit if not homepage
+        }
+      
+        // --- Inject HTML ---
+        document.body.insertAdjacentHTML("beforeend", `
+          <div id="r4j-offers-overlay" aria-hidden="true">
+            <div id="r4j-offers-modal" role="dialog" aria-modal="true" aria-labelledby="r4j-offers-title">
+              <button class="r4j-close" aria-label="Fermer la fenêtre">&times;</button>
+              <div class="r4j-badge"> Offres Spéciales</div>
+              <h2 id="r4j-offers-title">Long séjour à Marrakech</h2>
+              <ul class="r4j-lines">
+                <li><strong>Séjour 5 nuits</strong> — transfert offert </li>
+                <li><strong>Séjour 7 nuits</strong> — transfert + massage offert </li>
+              </ul>
+              <a id="r4j-primary" class="r4j-btn" href="${PRIMARY_HREF}">Voir les offres</a>
+              <p class="r4j-note">Offres valables uniquement pour les réservations directes sur notre site officiel.</p>
+            </div>
+          </div>
+        `);
+      
+        // --- Inject CSS ---
+        const css = `
+          #r4j-offers-overlay{position:fixed;inset:0;display:none;background:rgba(15,15,15,.55);z-index:99999;place-items:center;}
+          #r4j-offers-overlay.r4j-show{display:grid;}
+          #r4j-offers-modal{background:#f4eadf;color:#2b2b2b;border-radius:18px;padding:28px;max-width:560px;width:90%;box-shadow:0 12px 35px rgba(0,0,0,.35);position:relative}
+          .r4j-close{position:absolute;top:8px;right:12px;background:0;border:0;font-size:32px;cursor:pointer;color:#444}
+          .r4j-close:hover{color:#000}
+          .r4j-badge{display:inline-block;background:rgba(20,62,70,.08);padding:6px 10px;border-radius:999px;margin-bottom:8px;font-size:.9rem;color:#143e46}
+          #r4j-offers-title{margin:6px 0 10px;color:#143e46;font-size:1.4rem;font-weight:700}
+          .r4j-lines{margin:0 0 18px 18px;padding:0}
+          .r4j-lines li{margin:6px 0}
+          .r4j-btn{display:inline-block;margin-top:12px;padding:12px 20px;border-radius:999px;background:#d9b24b;color:#1b1b1b;font-weight:700;text-decoration:none;box-shadow:0 2px 0 rgba(0,0,0,.15)}
+          .r4j-btn:hover{background:#c9a23a}
+          .r4j-note{margin-top:10px;font-size:.85rem;opacity:.8}
+        `;
+        const style = document.createElement("style");
+        style.textContent = css;
+        document.head.appendChild(style);
+      
+        // --- Open/close helpers ---
+        const overlay = document.getElementById("r4j-offers-overlay");
+        const modal   = document.getElementById("r4j-offers-modal");
+        const closeBtn= modal.querySelector(".r4j-close");
+        const primary = modal.querySelector("#r4j-primary");
+      
+        function closePopup(){
+          overlay.classList.remove("r4j-show");
+          overlay.setAttribute("aria-hidden","true");
+        }
+        function openPopup(){
+          overlay.classList.add("r4j-show");
+          overlay.setAttribute("aria-hidden","false");
+          setTimeout(()=>closeBtn.focus(), 10);
+        }
+      
+        // Close actions
+        closeBtn.addEventListener("click", closePopup);
+        overlay.addEventListener("click", (e)=>{ if(e.target===overlay) closePopup(); });
+        document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") closePopup(); });
+      
+        // Close on primary button click, then navigate/scroll
+        primary.addEventListener("click", function(e){
+          const href = this.getAttribute("href") || "";
+          const isHash = href.startsWith("#") && href.length > 1;
+          closePopup();
+          if (isHash){
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target){
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+              location.hash = href;
+            }
+          }
+        });
+      
+        // Show after delay
+        setTimeout(openPopup, SHOW_DELAY_MS);
+      });
       </script>
+      
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
