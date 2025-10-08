@@ -53,11 +53,20 @@ export default function Home() {
     <div>
       {/* === Hero === */}
       <section
-        className="h-[80vh] min-h-[560px] grid place-items-center text-center relative"
+        className="h-[80vh] md:h-screen min-h-[560px] grid place-items-center text-center relative"
         style={{ backgroundImage: `url(${hero})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
         <div className="absolute inset-0 bg-black/30" />
-        <div className="relative text-white space-y-3 px-4"></div>
+        <div className="block sm:hidden relative text-white space-y-3 px-4">
+          <a
+            href="https://riad-4-jardins-spa.hotelrunner.com/bv3/search"
+            target="_blank"
+            rel="noreferrer"
+            className="px-6 py-2 rounded-full bg-brand-gold text-brand-forest font-semibold shadow transition-all duration-300 hover:shadow-lg hover:bg-brand-forest hover:text-brand-gold"
+          >
+            {i18n.language.startsWith("fr") ? "Réservez" : "Book"}
+          </a>
+        </div>
       </section>
 
       {/* === 3 Feature Cards (Rooms / Spa / Restaurant) === */}
