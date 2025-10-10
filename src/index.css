@@ -44,6 +44,9 @@ input, textarea, select {
 }
 /* === Global Button Hover (Gold / Teal Style) === */
 .btn-gold {
+  @apply px-6 py-3 rounded-[14px] bg-[#EEC86E] text-[#294447] font-bold shadow transition-all duration-300 ease-in-out;
+}
+.btn-gold-rounded {
   @apply px-6 py-3 rounded-full bg-[#EEC86E] text-[#294447] font-semibold shadow transition-all duration-300 ease-in-out;
 }
 

@@ -21,23 +21,6 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef(null);
   const menuBtn = useRef(null);
-  // Close dropdowns on outside click / Esc
-  useEffect(() => {
-    const onDown = (e) => {
-      if (
-        menuOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(e.target) &&
-        menuBtn.current &&
-        !menuBtn.current.contains(e.target)
-      ) setMenuOpen(false);
-
-      if (
-        langOpen &&
-        langRef.current &&
-        !langRef.current.contains(e.target)
-      ) setLangOpen(false);
-    }}, [menuOpen, langOpen]);
 
   const langRef = useRef(null);
   const currentLang = i18n.language?.startsWith("fr") ? "FR" : "EN";

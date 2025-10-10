@@ -23,13 +23,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-3 gap-12 items-start">
         {/* LEFT: social + short message */}
         <div className="space-y-6">
-          <p className="max-w-sm leading-relaxed text-[17px]">
+          <p className="max-w-sm leading-relaxed font-semibold text-[14px]">
             {i18n.language.startsWith("fr")
               ? "Réservez votre séjour dans notre riad authentique."
               : "Book your stay in our authentic riad."}
           </p>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center ml-6 w-full gap-6">
             {/* Instagram */}
             <a
               href="https://www.instagram.com/riad4jardins/"
@@ -38,7 +38,7 @@ export default function Footer() {
               aria-label="Instagram"
               className="inline-flex"
             >
-              <svg viewBox="0 0 24 24" className="w-14 h-14 fill-none stroke-white" strokeWidth="1.8">
+              <svg viewBox="0 0 24 24" className="w-12 h-12 fill-none stroke-white" strokeWidth="1.8">
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4" />
                 <circle cx="17.6" cy="6.6" r="1.1" fill="white" stroke="none" />
@@ -53,7 +53,7 @@ export default function Footer() {
               aria-label="LinkedIn"
               className="inline-flex"
             >
-              <svg viewBox="0 0 24 24" className="w-14 h-14 fill-white">
+              <svg viewBox="0 0 24 24" className="w-10 h-10 fill-white">
                 <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.84-2.08 3.79-2.08 4.05 0 4.8 2.7 4.8 6.18V23h-4v-6.58c0-1.6-.03-3.62-2.2-3.62-2.2 0-2.54 1.74-2.54 3.51V23h-4V8.5z"/>
               </svg>
             </a>
@@ -62,11 +62,11 @@ export default function Footer() {
 
         {/* MIDDLE: Contact */}
         <div className="space-y-4">
-          <h3 className="font-serif text-4xl">Contact</h3>
-          <p className="text-lg">+212-808-653-506</p>
+          <h3 className="font-serif text-4xl text-white font-bold">Contact</h3>
+          <p className="py-3">+212-808-653-506</p>
           <a
             href="mailto:riad4jardins@gmail.com"
-            className="underline text-lg underline-offset-4 decoration-white/60 hover:decoration-white"
+            className="underline underline-offset-4 decoration-white/60 hover:decoration-white"
           >
             riad4jardins@gmail.com
           </a>
@@ -74,7 +74,7 @@ export default function Footer() {
 
         {/* RIGHT: Email form */}
         <form onSubmit={onSubmit} className="space-y-3">
-          <label htmlFor="footerEmail" className="block text-lg">
+          <label htmlFor="footerEmail" className="block text-lg font-semibold">
             {i18n.language.startsWith("fr") ? "Votre adresse e-mail ici" : "Your email address here"}
           </label>
           <input

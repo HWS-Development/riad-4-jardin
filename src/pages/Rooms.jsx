@@ -93,7 +93,7 @@ export default function Rooms() {
               : "bg-white text-brand-charcoal"
           }`}
         >
-          <div className="mx-auto max-w-6xl px-6 py-14 md:py-16">
+          <div className="mx-auto max-w-4xl px-6 py-14 md:py-16">
             {/* Images before title (Deluxe style) */}
             {!r.headerless && (
               <div className="grid md:grid-cols-12 gap-6 items-start">
@@ -141,7 +141,7 @@ export default function Rooms() {
 
             {/* Description */}
             <p
-              className={`mt-4 text-[15px] leading-relaxed max-w-3xl ${
+              className={`mt-4 text-[15px] leading-relaxed max-w-3xl md:w-full ${
                 r.band === "teal" ? "text-white/95" : "text-brand-charcoal/90"
               }`}
             >

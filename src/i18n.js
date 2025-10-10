@@ -58,19 +58,19 @@ const resources = {
       },
 
       // --- Offers
-      offers: {
-        title: "Offres spéciales",
-        offer5: {
-          title: "Séjour 5 nuits — Transfert arrivée offert",
-          items: ["Accueil personnalisé à l’aéroport", "Petit-déjeuner inclus", "Wi-Fi gratuit"],
-          cta: "Réserver 5 nuits",
-        },
-        offer7: {
-          title: "Séjour 7 nuits — Transfert + Massage offerts",
-          items: ["Accueil personnalisé à l’aéroport", "Petit-déjeuner inclus", "Wi-Fi gratuit"],
-          cta: "Réserver 7 nuits",
-        },
-      },
+      // offers: {
+      //   title: "Offres spéciales",
+      //   offer5: {
+      //     title: "Séjour 5 nuits — Transfert arrivée offert",
+      //     items: ["Accueil personnalisé à l’aéroport", "Petit-déjeuner inclus", "Wi-Fi gratuit"],
+      //     cta: "Réserver 5 nuits",
+      //   },
+      //   offer7: {
+      //     title: "Séjour 7 nuits — Transfert + Massage offerts",
+      //     items: ["Accueil personnalisé à l’aéroport", "Petit-déjeuner inclus", "Wi-Fi gratuit"],
+      //     cta: "Réserver 7 nuits",
+      //   },
+      // },
       offers: {
         title: "Offres spéciales",
         offer5: {
@@ -101,8 +101,8 @@ const resources = {
 
       // --- Testimonials
       testimonials: {
-        one: "« Un séjour inoubliable, ambiance apaisante et service impeccable. » — Sophie L.",
-        two: "« Une expérience authentique et magique à chaque instant. » — Marc D.",
+        one: "Un séjour inoubliable, ambiance apaisante et service impeccable. Je recommande vivement ce riad à Marrakech.",
+        two: "L'architecture marocaine est magnifiquement mise en valeur. Une expérience authentique et relaxante à chaque instant.",
       },
 
       footer: {
