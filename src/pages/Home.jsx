@@ -1,9 +1,6 @@
 // src/pages/Home.jsx
 import { useTranslation } from "react-i18next";
 
-// Hero image
-import hero from "../assets/hero.jpg";
-
 // 3-cards images
 import imgRooms from "../assets/home/rooms.jpg";
 import imgSpa from "../assets/home/spa.jpg";
@@ -244,9 +241,9 @@ export function HeroSection() {
   const { i18n } = useTranslation();
   // Put your images here (first one can be your current `hero`)
   const images = [
-    "/src/assets/hero.jpg",
-    "/src/assets/home/hero-cover2.png",
-    "/src/assets/home/hero-cover3.png",
+    "/images/hero.jpg",
+    "/images/hero-cover2.png",
+    "/images/hero-cover3.png",
   ];
 
   const [index, setIndex] = useState(0);
