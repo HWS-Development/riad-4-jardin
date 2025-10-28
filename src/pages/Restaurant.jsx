@@ -1,32 +1,43 @@
 // src/pages/Restaurant.jsx
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { sendEmail } from "../utils/sendEmail"; // ✅ Shared EmailJS util
 
-// === IMAGES (replace with your real paths) ===
-import imgHero from "../assets/restaurant/hero.jpg";        // big header image
-import imgBreakfast from "../assets/restaurant/breakfast.jpg"; // left rounded image
-import imgTable from "../assets/restaurant/table.jpg";         // right rounded image
-import imgWorkshop from "../assets/services/workshops.jpg";   // image near the form
+// === IMAGES ===
+import imgHero from "../assets/restaurant/hero.jpg";
+import imgBreakfast from "../assets/restaurant/breakfast.jpg";
+import imgTable from "../assets/restaurant/table.jpg";
+import imgWorkshop from "../assets/services/workshops.jpg";
 
 export default function Restaurant() {
   const { i18n } = useTranslation();
   const fr = i18n.language?.startsWith("fr");
 
-  // --- simple form state ---
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  // --- form state ---
+  const [form, setForm] = useState({ name: "", phone: "", message: "", email: "" });
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    // TODO: send to backend/mail
-    setMsg(
-      fr
-        ? "Merci ! Nous vous recontacterons rapidement."
-        : "Thanks! We’ll get back to you shortly."
-    );
-    setForm({ name: "", phone: "", message: "" });
+
+    if (!form.name || !form.phone) {
+      setMsg(fr ? "Veuillez remplir les champs obligatoires." : "Please fill the required fields.");
+      return;
+    }
+
+    setLoading(true);
+    const res = await sendEmail(form, "Restaurant"); // ✅ use context = "Restaurant"
+    setLoading(false);
+
+    if (res.success) {
+      setMsg(fr ? "✅ Votre demande a bien été envoyée." : "✅ Your request has been sent successfully.");
+      setForm({ name: "", phone: "", email: "", message: "" });
+    } else {
+      setMsg(fr ? "❌ Une erreur s’est produite, réessayez plus tard." : "❌ An error occurred, please try again later.");
+    }
   };
 
   return (
@@ -69,24 +80,20 @@ export default function Restaurant() {
 
           {/* Two blocks: image + text */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left rounded image */}
-            
-<div
-  className="overflow-hidden shadow-md w-full h-[380px] md:h-[420px]"
-  style={{
-    borderRadius: "0 260px 0 260px / 0 160px 0 160px",
-  }}
->
-  <img
-    src={imgTable}
-    alt={fr ? "Table du jardin" : "Garden table"}
-    className="w-full h-full object-cover"
-    loading="lazy"
-  />
-</div>
+            <div
+              className="overflow-hidden shadow-md w-full h-[380px] md:h-[420px]"
+              style={{
+                borderRadius: "0 260px 0 260px / 0 160px 0 160px",
+              }}
+            >
+              <img
+                src={imgTable}
+                alt={fr ? "Table du jardin" : "Garden table"}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
 
-
-            {/* Right text (restaurant intro) */}
             <div>
               <h3
                 className="font-bold text-xl md:text-2xl mb-3"
@@ -96,20 +103,19 @@ export default function Restaurant() {
               </h3>
               <p className="text-[15px] leading-relaxed">
                 {fr
-                  ? "Au Riad 4 jardins, chaque repas est une invitation à découvrir la richesse de la cuisine marocaine dans un cadre serein et chaleureux. Les plats sont préparés à partir de produits frais des marchés, choisis chaque matin, et cuisinés avec passion selon les recettes traditionnelles."
-                  : "At Riad 4 Jardins, each meal is an invitation to discover the richness of Moroccan cuisine in a serene and warm setting. Dishes are prepared with fresh market produce chosen each morning and cooked with passion following traditional recipes."}
+                  ? "Au Riad 4 Jardins, chaque repas est une invitation à découvrir la richesse de la cuisine marocaine dans un cadre serein et chaleureux."
+                  : "At Riad 4 Jardins, each meal is an invitation to discover the richness of Moroccan cuisine in a serene and warm setting."}
               </p>
               <p className="mt-3 text-[15px] leading-relaxed">
                 {fr
-                  ? "Les saveurs locales se marient avec une touche moderne pour offrir une expérience conviviale et authentique. Que ce soit pour le petit-déjeuner, le déjeuner ou le dîner, profitez d’un moment gourmand au milieu des jardins apaisants."
-                  : "Local flavors blend with a modern touch to offer a friendly, authentic experience. Whether breakfast, lunch, or dinner, enjoy a delightful moment surrounded by peaceful gardens."}
+                  ? "Les saveurs locales se marient avec une touche moderne pour offrir une expérience conviviale et authentique."
+                  : "Local flavors blend with a modern touch to offer a friendly, authentic experience."}
               </p>
             </div>
           </div>
 
-          {/* Second row: text + rounded image */}
+          {/* Second row */}
           <div className="mt-8 grid md:grid-cols-2 gap-12 items-center">
-            {/* Left text */}
             <div>
               <h3
                 className="font-bold text-xl md:text-2xl mb-3"
@@ -119,8 +125,8 @@ export default function Restaurant() {
               </h3>
               <p className="text-[15px] leading-relaxed">
                 {fr
-                  ? "Chaque matin, un petit-déjeuner généreux est servi dans les jardins paisibles du riad. Jus locaux, fruits frais, pain traditionnel, crêpes marocaines, confitures maison et autres spécialités selon les saisons."
-                  : "Every morning, a generous breakfast is served in the peaceful riad gardens. Local juices, fresh fruit, traditional bread, Moroccan pancakes, homemade jams, and other seasonal specialties."}
+                  ? "Chaque matin, un petit-déjeuner généreux est servi dans les jardins paisibles du riad."
+                  : "Every morning, a generous breakfast is served in the peaceful riad gardens."}
               </p>
               <p className="mt-3 text-[15px] leading-relaxed">
                 {fr
@@ -129,23 +135,19 @@ export default function Restaurant() {
               </p>
             </div>
 
-            {/* Right rounded image */}
-           {/* Custom organic curve image */}
-<div
-  className="overflow-hidden shadow-md w-full h-[380px] md:h-[420px]"
-  style={{
-    borderRadius: "0 200px 0 200px / 0 120px 0 120px", // gives that oval-style curve
-    clipPath: "path('M0 0H90%Q100% 40% 90% 100%H0Z')", // ensures smooth curvature
-  }}
->
-  <img
-    src={imgBreakfast}
-    alt={fr ? "Table du jardin" : "Garden table"}
-    className="w-full h-full object-cover"
-    loading="lazy"
-  />
-</div>
-
+            <div
+              className="overflow-hidden shadow-md w-full h-[380px] md:h-[420px]"
+              style={{
+                borderRadius: "0 200px 0 200px / 0 120px 0 120px",
+              }}
+            >
+              <img
+                src={imgBreakfast}
+                alt={fr ? "Petit-déjeuner" : "Breakfast"}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -162,8 +164,8 @@ export default function Restaurant() {
             </strong>
             <p className="mt-2 opacity-90 text-sm md:text-base">
               {fr
-                ? "Indiquez vos préférences, nous vous recontacterons rapidement pour confirmer votre rendez-vous."
-                : "Tell us your preferences, we’ll get back to you quickly to confirm your appointment."}
+                ? "Indiquez vos préférences, nous vous recontacterons rapidement."
+                : "Tell us your preferences, we’ll get back to you soon."}
             </p>
           </div>
 
@@ -186,6 +188,20 @@ export default function Restaurant() {
                 className="w-full mb-4 rounded-md border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-brand-gold"
                 placeholder={fr ? "Votre nom" : "Your name"}
                 required
+              />
+
+              {/* Email */}
+              <label className="block text-sm font-medium mb-1" htmlFor="email">
+                {fr ? "Email" : "Email"}
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={onChange}
+                className="w-full mb-4 rounded-md border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-brand-gold"
+                placeholder="example@email.com"
               />
 
               {/* Phone */}
@@ -217,21 +233,27 @@ export default function Restaurant() {
                 placeholder={fr ? "Dites-nous vos besoins" : "Tell us your needs"}
               />
 
-              {/* Submit centered */}
+              {/* Submit */}
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="mt-5 inline-block px-8 py-3 rounded-lg bg-[#E9C46A] text-[#264653] font-semibold shadow transition
-                             hover:bg-[#264653] hover:text-[#E9C46A]"
+                  disabled={loading}
+                  className="mt-5 inline-block px-8 py-3 rounded-lg bg-[#E9C46A] text-[#264653] font-semibold shadow transition hover:bg-[#264653] hover:text-[#E9C46A]"
                 >
-                  {fr ? "Envoyer" : "Send"}
+                  {loading
+                    ? fr
+                      ? "Envoi..."
+                      : "Sending..."
+                    : fr
+                    ? "Envoyer"
+                    : "Send"}
                 </button>
               </div>
 
-              {msg && <p className="mt-3 text-sm text-brand-teal text-center">{msg}</p>}
+              {msg && <p className="mt-3 text-sm text-center text-brand-teal">{msg}</p>}
             </form>
 
-            {/* --- SIDE IMAGE (slightly lower than form) --- */}
+            {/* --- SIDE IMAGE --- */}
             <div className="rounded-xl overflow-hidden shadow-lg mt-10 md:mt-16">
               <img
                 src={imgWorkshop}
