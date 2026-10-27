@@ -95,6 +95,34 @@ export default function Footer() {
           {msg && <p className="text-sm opacity-90 mt-1">{msg}</p>}
         </form>
       </div>
+      <div className="mx-auto max-w-6xl px-6 pb-8">
+        <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-sm font-semibold">
+            {i18n.language.startsWith("fr")
+              ? "Paiement par carte bancaire"
+              : "Card payments"}
+          </p>
+          <ul className="flex flex-wrap items-center gap-3" aria-label={i18n.language.startsWith("fr") ? "Moyens de paiement" : "Payment methods"}>
+            {[
+              { file: "chaabi-payment.png", name: "Chaabi Payment", width: 784, height: 260 },
+              { file: "verified-by-visa.png", name: "Verified by Visa", width: 600, height: 265 },
+              { file: "mastercard-securecode.png", name: "Mastercard SecureCode", width: 500, height: 230 },
+            ].map(({ file, name, width, height }) => (
+              <li key={file} className="flex h-16 w-32 items-center justify-center rounded-md bg-[#F7F7F7] p-2 sm:w-36">
+                <img
+                  src={`/images/payments/${file}`}
+                  alt={name}
+                  width={width}
+                  height={height}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-full max-w-full object-contain"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </footer>
   );
 }
