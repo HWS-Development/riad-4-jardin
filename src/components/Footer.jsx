@@ -1,6 +1,7 @@
 // src/components/Footer.jsx
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
@@ -121,6 +122,13 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="pt-6 text-xs">
+          <Link to="/conditions-reservation" className="underline underline-offset-4">
+            {i18n.language.startsWith("fr")
+              ? "Conditions de réservation et de paiement"
+              : "Booking and payment conditions"}
+          </Link>
         </div>
       </div>
     </footer>

@@ -6,6 +6,7 @@ import Spa from "./pages/Spa.jsx";
 import Services from "./pages/Services.jsx";
 import Restaurant from "./pages/Restaurant.jsx";
 import Gallery from "./pages/Gallery.jsx";
+import BookingConditions from "./pages/BookingConditions.jsx";
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/services-activites" element={<Services />} />
         <Route path="/restaurant" element={<Restaurant />} />
         <Route path="/galerie" element={<Gallery />} />
+        <Route path="/conditions-reservation" element={<BookingConditions />} />
     
       </Routes>
     </Layout>

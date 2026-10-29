@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "locale": "en",
+  "title": "Booking and payment conditions",
+  "updatedAt": "2026-10-28",
+  "sections": [
+    {
+      "id": "reservation",
+      "title": "1. Booking",
+      "paragraphs": [
+        "These conditions apply to bookings made directly with Riad 4 Jardins in Marrakech and through its HotelRunner booking engine. Bookings made through an intermediary are subject to the conditions communicated at the time of that booking.",
+        "Before confirming, guests should check their dates, number of travellers, room category, included services, total price and the conditions of the selected rate. The booking becomes firm following confirmation by the booking engine and in accordance with the payment terms of the selected rate. Guests receive a summary of their booking and the applicable conditions."
+      ]
+    },
+    {
+      "id": "prices",
+      "title": "2. Prices and included services",
+      "paragraphs": [
+        "Prices are stated in Moroccan dirhams (MAD), per room and per night, based on the selected occupancy. Breakfast is included.",
+        "Tourist tax is included in the total booking amount. Optional services, including airport transfers, meals, spa treatments and excursions, are charged separately unless otherwise stated in the selected offer.",
+        "For promotional offers, benefits, validity dates, exclusions and whether offers can be combined are specified in the offer description. The total amount due and any amounts payable at the property are presented before confirmation."
+      ]
+    },
+    {
+      "id": "rates",
+      "title": "3. Conditions for the selected rate",
+      "rates": [
+        {
+          "id": "flexible",
+          "title": "Flexible rate",
+          "items": [
+            "Payment: the full amount of the stay is charged at the time of booking.",
+            "Free cancellation: available until 23:59, Marrakech local time, on the day falling 5 days before the arrival date.",
+            "Cancellation after this deadline: the full amount of the stay is due and no refund is granted.",
+            "When a booking is cancelled within the free-cancellation period, amounts collected are refunded in accordance with section 6.",
+            "Date changes: possible subject to availability and confirmation by the Riad. Any price difference resulting from the new dates or applicable conditions will be communicated to the guest before the change is approved."
+          ]
+        },
+        {
+          "id": "non-refundable",
+          "title": "Non-refundable rate",
+          "items": [
+            "Payment: the full amount of the stay is due at the time of booking.",
+            "Cancellation: no refund is granted. The full amount paid is retained by the Riad.",
+            "Changes: changes are not guaranteed and remain subject to the Riad’s prior agreement, in accordance with the applicable booking conditions.",
+            "Prior information: the non-refundable nature of the rate and its restrictions are clearly displayed before the booking is confirmed."
+          ]
+        },
+        {
+          "id": "promotional",
+          "title": "Long-stay or promotional offer",
+          "items": [
+            "The conditions of each offer specify its name, validity period and, where applicable, the minimum number of nights required.",
+            "Included services and benefits are detailed in the offer description at the time of booking.",
+            "Payment terms are those stated for the relevant offer at the time of booking.",
+            "Cancellation and change conditions are specified in the offer before confirmation. Where no special conditions are stated, the rules of the selected rate apply.",
+            "A change that reduces the number of nights may result in a revised price and the loss of promotional benefits, in accordance with the offer conditions. The new amount is communicated to the guest before the change is approved."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "payment",
+      "title": "4. Payment methods",
+      "paragraphs": [
+        "The Riad accepts Visa and Mastercard. Payment is made through a payment link.",
+        "For online payments, the cardholder’s bank may request authentication. Never share your full card number or security code by email or messaging.",
+        "Payments are debited in Moroccan dirhams (MAD). Any exchange-rate or banking fees charged by the guest’s bank depend on their banking agreement.",
+        "If payment fails, guests will be asked to contact the Riad within 24 hours of notification to regularise their booking. If the payment is not regularised within that period, the Riad reserves the right to cancel the booking after informing the guest, in accordance with the rate conditions accepted at the time of booking."
+      ]
+    },
+    {
+      "id": "cancellation",
+      "title": "5. Cancellation, no-show and early departure",
+      "paragraphs": [
+        "Cancellation or change requests must be sent to info@riad4jardins.com. Guests should retain confirmation that their request has been processed.",
+        "Charges depend on the rate accepted at the time of booking. A no-show occurs when a guest does not arrive on the scheduled arrival day. Guests arriving late must inform the Riad as soon as possible. The room is held until midnight, Marrakech local time, unless otherwise agreed with the property in advance.",
+        "A no-show results in the full booked stay being charged, for both flexible and non-refundable rates.",
+        "In the event of early departure, unused nights remain payable and are not refunded, regardless of the selected rate, unless the Riad makes an exceptional agreement.",
+        "Guests expecting a late arrival must inform the Riad on +212 808 653 506 or by email."
+      ]
+    },
+    {
+      "id": "refunds",
+      "title": "6. Refunds",
+      "paragraphs": [
+        "When a refund is due under the booking conditions, it is initiated within 7 business days of refund confirmation by Riad 4 Jardins & Spa, using the original payment method unless otherwise agreed between the parties. The time taken for funds to appear in the guest’s account then depends on their bank or payment institution."
+      ]
+    },
+    {
+      "id": "arrival",
+      "title": "7. Arrival, departure and guest reception",
+      "items": [
+        "Check-in: from 14:00, Marrakech local time.",
+        "Check-out: before 11:00, Marrakech local time.",
+        "Early check-in and late check-out: possible subject to availability and prior agreement with the Riad. A supplement may apply depending on the time and availability.",
+        "On arrival, each guest must present a valid official identity document. Foreign nationals must present their passport. Moroccan nationals must present their national identity card or another officially accepted document.",
+        "Guests are asked to inform the Riad in advance of any late arrival so that their reception can be organised.",
+        "Children are welcomed in accordance with the capacity and conditions of each room category. An extra bed may be offered for €20 per night, subject to availability and compatibility with the booked room.",
+        "The number of guests in each room must not exceed the maximum occupancy stated at the time of booking. Any request for an additional guest or extra bed must be approved by the Riad in advance."
+      ]
+    },
+    {
+      "id": "requests",
+      "title": "8. Special requests and additional services",
+      "paragraphs": [
+        "Special requests remain subject to written confirmation. Additional services booked separately may have their own payment and cancellation conditions, which are communicated before acceptance."
+      ]
+    },
+    {
+      "id": "unavailability",
+      "title": "9. Inability to accommodate guests and exceptional circumstances",
+      "paragraphs": [
+        "If Riad 4 Jardins & Spa is unable to honour a booking, the property informs the guest as soon as possible and makes efforts to offer a suitable alternative, including equivalent accommodation, subject to availability and the guest’s agreement.",
+        "If no acceptable alternative can be arranged, amounts paid for the affected booking are refunded in full, in accordance with applicable provisions. Exceptional circumstances are considered individually in light of the circumstances and applicable regulations."
+      ]
+    },
+    {
+      "id": "contact",
+      "title": "10. Property identification and contact details",
+      "paragraphs": [
+        "Riad 4 Jardins — Operator: Riad 4 Jardins.",
+        "Address: 6 Derb Arset Aouzal, Marrakech, 40000.",
+        "Telephone: +212 808 653 506.",
+        "Email: info@riad4jardins.com.",
+        "Last updated: 28/10/2026."
+      ]
+    }
+  ]
+}
