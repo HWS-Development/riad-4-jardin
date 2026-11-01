@@ -1,8 +1,7 @@
 // src/i18n.js
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import { createInstance } from "i18next";
 
-const resources = {
+export const resources = {
   fr: {
     translation: {
       nav: {
@@ -18,7 +17,7 @@ const resources = {
 
       hero: {
         title: "Riad 4 jardins",
-        subtitle: "Découvrez Riad 4 Jardins, une maison d’hôtes traditionnelle à Marrakech, alliant élégance, authenticité et confort pour un séjour inoubliable",
+        subtitle: "Découvrez Riad 4 Jardins, un riad traditionnel à Marrakech, alliant élégance, authenticité et confort pour un séjour inoubliable",
       },
 
       // --- Cards on home (Chambre / Spa / Restaurant)
@@ -110,7 +109,7 @@ const resources = {
         bookSub:
           "Découvrez l’élégance et l’authenticité de notre riad à Marrakech. Réservez votre chambre dès maintenant.",
         emailLabel: "Votre adresse e-mail",
-        cta: "Réserver votre séjour maintenant",
+        cta: "Envoyer ma demande",
         note: "Aucune newsletter — nous utilisons votre e-mail uniquement pour votre demande.",
       },
 
@@ -133,7 +132,7 @@ const resources = {
 
       hero: {
         title: "Riad 4 jardins",
-        subtitle: "Charm & traditions",
+        subtitle: "Discover Riad 4 Jardins, a traditional riad in Marrakech, combining elegance, authenticity and comfort for a memorable stay.",
       },
 
       // --- Cards on home (Room / Spa / Restaurant)
@@ -213,7 +212,7 @@ const resources = {
         bookSub:
           "Experience the elegance and authenticity of our riad in Marrakech. Reserve your room now.",
         emailLabel: "Your email address",
-        cta: "Book your stay now",
+        cta: "Send my enquiry",
         note: "No newsletter — we only use your email for this request.",
       },
 
@@ -222,11 +221,15 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: "fr",
-  fallbackLng: "en",
-  interpolation: { escapeValue: false },
-});
-
-export default i18n;
+export function createI18n(locale, translations = resources[locale].translation) {
+  const instance = createInstance();
+  instance.init({
+    resources: { [locale]: { translation: translations } },
+    lng: locale,
+    fallbackLng: false,
+    initImmediate: false,
+    interpolation: { escapeValue: false },
+    react: { useSuspense: false },
+  });
+  return instance;
+}

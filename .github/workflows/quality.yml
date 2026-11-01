@@ -1,0 +1,40 @@
+name: Site quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VITE_EMAILJS_SERVICE_ID: test-service
+      VITE_EMAILJS_TEMPLATE_ID: test-template
+      VITE_EMAILJS_PUBLIC_KEY: test-public-key
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run lint
+      - run: npm test
+      - run: npm run test:e2e
+      - run: npm audit --audit-level=high
+      - run: npm ci --prefix studio
+      - run: npm audit --prefix studio --audit-level=high
+      - run: npm run studio:build
+        env:
+          SANITY_STUDIO_PROJECT_ID: localtest
+          SANITY_CLI_NO_TELEMETRY: 1
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-evidence
+          path: test-results/
+          retention-days: 7

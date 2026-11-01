@@ -1,27 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout.jsx";
-import Home from "./pages/Home.jsx";
-import Rooms from "./pages/Rooms.jsx";
-import Spa from "./pages/Spa.jsx";
-import Services from "./pages/Services.jsx";
-import Restaurant from "./pages/Restaurant.jsx";
-import Gallery from "./pages/Gallery.jsx";
-import BookingConditions from "./pages/BookingConditions.jsx";
+import { useState, useEffect } from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { createI18n } from './i18n.js';
+import { ContentProvider } from './content/ContentContext.jsx';
+import Layout from './components/Layout.jsx';
 
-
-export default function App() {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/chambres" element={<Rooms />} />
-        <Route path="/spa" element={<Spa />} />
-        <Route path="/services-activites" element={<Services />} />
-        <Route path="/restaurant" element={<Restaurant />} />
-        <Route path="/galerie" element={<Gallery />} />
-        <Route path="/conditions-reservation" element={<BookingConditions />} />
-    
-      </Routes>
-    </Layout>
-  );
+export default function App({ Page, data, onHydrated }) {
+  const [i18n] = useState(() => createI18n(data.locale, data.translations));
+  useEffect(() => { onHydrated?.(); }, [onHydrated]);
+  return <ContentProvider value={data}>
+    <I18nextProvider i18n={i18n}>
+      <Layout><Page /></Layout>
+    </I18nextProvider>
+  </ContentProvider>;
 }

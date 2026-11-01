@@ -1,7 +1,9 @@
 // src/pages/Spa.jsx
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import emailjs from "emailjs-com";
+import { sendEmail } from '../utils/sendEmail.js';
+import { useCopy, useContent } from '../content/ContentContext.jsx';
+import ResponsiveImage from '../components/ResponsiveImage.jsx';
+import { initialFormValues } from '../utils/formValues.js';
 
 // Images
 import heroSpa from "../assets/spa/hero.jpg";
@@ -11,84 +13,63 @@ import imgEsthetique from "../assets/spa/esthetique.jpg";
 import imgFormSide from "../assets/spa/form-side.jpg";
 
 export default function Spa() {
-  const { i18n } = useTranslation();
-  const fr = i18n.language?.startsWith("fr");
+  const copy = useCopy();
+  const { settings } = useContent();
 
-  const [form, setForm] = useState({
+  const [form, setForm] = useState(() => initialFormValues('spa-form', {
     name: "",
     type: "",
     phone: "",
     datetime: "",
     message: "",
-  });
+  }));
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const submitted = Object.fromEntries(new FormData(e.currentTarget));
+    setForm(submitted);
 
-    if (!form.name || !form.phone || !form.type || !form.datetime) {
-      setMsg(fr ? "Veuillez remplir les champs obligatoires." : "Please fill the required fields.");
+    if (!submitted.name || !submitted.phone || !submitted.type || !submitted.datetime) {
+      setMsg(copy('spa.required', 'Veuillez remplir les champs obligatoires.', 'Please fill the required fields.'));
       return;
     }
 
     const templateParams = {
-      name: form.name,
-      type: form.type,
-      phone: form.phone,
-      datetime: form.datetime,
-      message: form.message,
+      ...submitted,
     };
 
-    emailjs
-      .send(
-        "service_azhjpv8", // 🔹 replace with your EmailJS service ID
-        "template_v8ho7aq", // 🔹 replace with your EmailJS template ID
-        templateParams,
-        "VVN8oXJqxWG4gZIHb" // 🔹 replace with your EmailJS public key
-      )
-      .then(
-        (response) => {
-          console.log("SUCCESS!", response.status, response.text);
-          setMsg(
-            fr
-              ? "Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt."
-              : "Thank you! Your request has been sent. We will contact you soon."
-          );
-          setForm({ name: "", type: "", phone: "", datetime: "", message: "" });
-        },
-        (err) => {
-          console.error("FAILED...", err);
-          setMsg(fr ? "Erreur d’envoi. Réessayez plus tard." : "Failed to send. Please try again later.");
-        }
-      );
+    if (loading) return;
+    setLoading(true); setMsg('');
+    const result = await sendEmail(templateParams, 'Spa');
+    setLoading(false);
+    if (result.success) {
+      setMsg(copy('spa.sent', 'Merci ! Votre demande a bien été envoyée. Nous vous contacterons bientôt.', 'Thank you! Your request has been sent. We will contact you soon.'));
+      setForm({ name: '', type: '', phone: '', datetime: '', message: '' });
+    } else setMsg(copy('spa.failed', 'Erreur d’envoi. Réessayez plus tard ou contactez-nous par e-mail.', 'Failed to send. Please try again later or contact us by email.'));
   };
 
   const cards = [
     {
       img: imgHammam,
-      title: fr ? "Hammams traditionnels" : "Traditional Hammams",
-      text: fr
-        ? "Découvrez l’art du hammam marocain, un rituel ancestral de purification et de détente."
-        : "Discover the art of the Moroccan hammam, an ancestral ritual of purification and relaxation.",
+      title: copy('spa.hammamTitle', 'Hammams traditionnels', 'Traditional Hammams'),
+      text: copy('spa.hammamText', 'Découvrez l’art du hammam marocain, un rituel ancestral de purification et de détente.', 'Discover the art of the Moroccan hammam, an ancestral ritual of purification and relaxation.'),
     },
     {
       img: imgMassage,
-      title: fr ? "Massages & Bien-être" : "Massages & Wellness",
-      text: fr
-        ? "Offrez-vous une parenthèse de sérénité grâce à nos massages professionnels."
-        : "Treat yourself to serenity with our professional massages.",
+      title: copy('spa.massageTitle', 'Massages & Bien-être', 'Massages & Wellness'),
+      text: copy('spa.massageText', 'Offrez-vous une parenthèse de sérénité grâce à nos massages professionnels.', 'Treat yourself to serenity with our professional massages.'),
     },
     {
       img: imgEsthetique,
-      title: fr ? "Esthétique & Soins du visage" : "Aesthetics & Face Care",
-      text: fr
-        ? "Soins du visage, manucure, pédicure… Produits naturels pour sublimer votre peau."
-        : "Facial care, manicure, pedicure… Natural products to enhance your skin.",
+      title: copy('spa.faceTitle', 'Esthétique & Soins du visage', 'Aesthetics & Face Care'),
+      text: copy('spa.faceText', 'Soins du visage, manucure, pédicure… Produits naturels pour sublimer votre peau.', 'Facial care, manicure, pedicure… Natural products to enhance your skin.'),
     },
   ];
 
@@ -97,11 +78,11 @@ export default function Spa() {
       {/* ===== HERO ===== */}
       <section
         className="h-[70vh] min-h-[520px] relative grid place-items-center text-center"
-        style={{ backgroundImage: `url(${heroSpa})`, backgroundSize: "cover", backgroundPosition: "center" }}
       >
+        <ResponsiveImage src={heroSpa} alt="" sizes="100vw" priority className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/35" />
         <h1 className="relative text-white font-serif text-4xl md:text-6xl drop-shadow">
-          {fr ? "Détente et Bien-être" : "Relaxation & Wellness"}
+          {copy('spa.h1', 'Détente et Bien-être', 'Relaxation & Wellness')}
         </h1>
       </section>
 
@@ -110,12 +91,10 @@ export default function Spa() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-brand-teal">
-              {fr ? "Nos soins Spa & Bien-être" : "Our Spa & Wellness Treatments"}
+              {copy('spa.treatments', 'Nos soins Spa & Bien-être', 'Our Spa & Wellness Treatments')}
             </h2>
             <p className="mt-2 text-brand-charcoal/80">
-              {fr
-                ? "Découvrez notre spa au riad, un havre de paix dédié à votre relaxation et bien-être."
-                : "Discover our riad spa, a haven of peace dedicated to your relaxation and wellness."}
+              {copy('spa.intro', 'Découvrez notre spa au riad, un havre de paix dédié à votre relaxation et bien-être.', 'Discover our riad spa, a haven of peace dedicated to your relaxation and wellness.')}
             </p>
           </div>
 
@@ -123,7 +102,7 @@ export default function Spa() {
             {cards.map((c) => (
               <article key={c.title} className="text-center">
                 <div className="rounded-[20px] overflow-hidden shadow-lg ring-1 ring-black/5">
-                  <img src={c.img} alt={c.title} className="w-full h-[260px] md:h-[280px] object-cover" />
+                  <ResponsiveImage src={c.img} alt={c.title} sizes="(min-width: 1152px) 342px, (min-width: 768px) 30vw, calc(100vw - 48px)" className="w-full h-[260px] md:h-[280px] object-cover" />
                 </div>
                 <h3 className="mt-5 font-serif text-xl text-brand-teal">{c.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-charcoal/80">{c.text}</p>
@@ -136,22 +115,20 @@ export default function Spa() {
       {/* ===== TEAL STRIP ===== */}
       <section className="bg-brand-teal text-white py-16 text-center">
         <div className="mx-auto max-w-3xl px-6">
-          <h4
+          <h2
             className="text-white text-[48px] font-serif font-bold mb-6 leading-tight"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            {fr ? "Voir la carte du Spa" : "See the Spa Menu"}
-          </h4>
+            {copy('spa.menuTitle', 'Voir la carte du Spa', 'See the Spa Menu')}
+          </h2>
           <p
             className="text-white opacity-90 mb-8 text-[16px] leading-relaxed"
             style={{ fontFamily: "'Playfair Display', serif", lineHeight: "1.6" }}
           >
-            {fr
-              ? "L’accès à la carte complète du Spa sera communiqué ultérieurement pour intégration."
-              : "The full Spa menu will be provided later for integration."}
+            {copy('spa.menuInfo', 'Contactez notre équipe pour connaître les soins disponibles, leurs durées et leurs tarifs, et préparer votre moment de détente.', 'Contact our team for available treatments, durations and prices, and to plan your time at the spa.')}
           </p>
           <a
-            href="mailto:riad4jardins@gmail.com"
+            href={`mailto:${settings.email}`}
             target="_self"
             rel="noreferrer"
             className="inline-block px-10 py-3 rounded-[15px] text-[20px] font-medium shadow-md transition-all duration-300"
@@ -168,7 +145,7 @@ export default function Spa() {
               e.currentTarget.style.color = "rgb(38, 70, 83)";
             }}
           >
-            {fr ? "Menu" : "Menu"}
+            {copy('spa.menuCta', 'Menu', 'Menu')}
           </a>
         </div>
       </section>
@@ -177,24 +154,24 @@ export default function Spa() {
       <section className="bg-[#6E5D53] text-white py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center mb-10">
-            <h3 className="font-serif text-3xl md:text-4xl">
-              {fr ? "Demander un rendez-vous SPA" : "Request a SPA Appointment"}
-            </h3>
+            <h2 className="font-serif text-3xl md:text-4xl text-white">
+              {copy('spa.appointment', 'Demander un rendez-vous SPA', 'Request a SPA Appointment')}
+            </h2>
             <p className="mt-2 opacity-90 text-sm md:text-base">
-              {fr
-                ? "Indiquez vos préférences, nous vous recontacterons rapidement pour confirmer votre rendez-vous."
-                : "Tell us your preferences, we’ll get back to you quickly to confirm your appointment."}
+              {copy('spa.appointmentIntro', 'Indiquez vos préférences, nous vous recontacterons rapidement pour confirmer votre rendez-vous.', 'Tell us your preferences, we’ll get back to you quickly to confirm your appointment.')}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
             {/* --- FORM --- */}
             <form
+              id="spa-form"
+              action={`mailto:${settings.email}`} method="post" encType="text/plain"
               onSubmit={onSubmit}
               className="bg-white text-brand-charcoal rounded-xl p-5 md:p-6 shadow-lg ring-1 ring-black/10"
             >
               <label className="block text-sm font-medium mb-1" htmlFor="name">
-                {fr ? "Nom *" : "Name *"}
+                {copy('spa.nameLabel', 'Nom *', 'Name *')}
               </label>
               <input
                 id="name"
@@ -203,12 +180,12 @@ export default function Spa() {
                 value={form.name}
                 onChange={onChange}
                 className="w-full mb-4 rounded-md border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-brand-gold"
-                placeholder={fr ? "Votre nom" : "Your name"}
+                placeholder={copy('spa.namePlaceholder', 'Votre nom', 'Your name')}
                 required
               />
 
               <label className="block text-sm font-medium mb-1" htmlFor="type">
-                {fr ? "Type de soin *" : "Treatment type *"}
+                {copy('spa.typeLabel', 'Type de soin *', 'Treatment type *')}
               </label>
               <input
                 id="type"
@@ -217,12 +194,12 @@ export default function Spa() {
                 value={form.type}
                 onChange={onChange}
                 className="w-full mb-4 rounded-md border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-brand-gold"
-                placeholder={fr ? "Massage, Hammam, Esthétique…" : "Massage, Hammam, Aesthetics…"}
+                placeholder={copy('spa.typePlaceholder', 'Massage, Hammam, Esthétique…', 'Massage, Hammam, Aesthetics…')}
                 required
               />
 
               <label className="block text-sm font-medium mb-1" htmlFor="phone">
-                {fr ? "Téléphone *" : "Phone *"}
+                {copy('spa.phoneLabel', 'Téléphone *', 'Phone *')}
               </label>
               <input
                 id="phone"
@@ -236,7 +213,7 @@ export default function Spa() {
               />
 
               <label className="block text-sm font-medium mb-1" htmlFor="datetime">
-                {fr ? "Date et heure *" : "Date & time *"}
+                {copy('spa.datetimeLabel', 'Date et heure *', 'Date & time *')}
               </label>
               <input
                 id="datetime"
@@ -249,7 +226,7 @@ export default function Spa() {
               />
 
               <label className="block text-sm font-medium mb-1" htmlFor="message">
-                {fr ? "Votre message" : "Your message"}
+                {copy('spa.messageLabel', 'Votre message', 'Your message')}
               </label>
               <textarea
                 id="message"
@@ -258,21 +235,21 @@ export default function Spa() {
                 value={form.message}
                 onChange={onChange}
                 className="w-full mb-6 rounded-md border border-black/10 px-3 py-2 outline-none focus:ring-2 focus:ring-brand-gold"
-                placeholder={fr ? "Dites-nous vos besoins" : "Tell us your needs"}
+                placeholder={copy('spa.messagePlaceholder', 'Dites-nous vos besoins', 'Tell us your needs')}
               />
 
-              <button type="submit" className="btn-gold block mx-auto">
-                {fr ? "Envoyer la demande" : "Send request"}
+              <button type="submit" disabled={loading} className="btn-gold block mx-auto disabled:opacity-60">
+                {loading ? copy('spa.sending', 'Envoi…', 'Sending…') : copy('spa.submit', 'Envoyer la demande', 'Send request')}
               </button>
 
-              {msg && <p className="mt-3 text-sm text-brand-teal text-center">{msg}</p>}
+              <p role="status" className="mt-3 text-sm text-brand-teal text-center">{msg}</p>
             </form>
 
             {/* --- IMAGE --- */}
             <div className="rounded-xl overflow-hidden shadow-lg ring-1 ring-black/10 md:mt-10">
-              <img
+              <ResponsiveImage
                 src={imgFormSide}
-                alt={fr ? "Ambiance du spa" : "Spa ambiance"}
+                alt={copy('spa.sideAlt', 'Ambiance du spa', 'Spa ambiance')}
                 className="w-full h-[520px] object-cover"
               />
             </div>

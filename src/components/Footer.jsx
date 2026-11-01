@@ -1,21 +1,33 @@
 // src/components/Footer.jsx
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { useCopy, useContent } from '../content/ContentContext.jsx';
+import { pagePath } from '../site/routes.js';
+import { sendEmail } from '../utils/sendEmail.js';
+import { initialFormValues } from '../utils/formValues.js';
 
 export default function Footer() {
   const { t, i18n } = useTranslation();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(() => initialFormValues('footer-form', { email: '' }).email);
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+  const copy = useCopy();
+  const { settings, locale } = useContent();
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setMsg(i18n.language.startsWith("fr") ? "Entrez un e-mail valide." : "Enter a valid email.");
+    const submittedEmail = new FormData(e.currentTarget).get('email');
+    setEmail(submittedEmail);
+    if (!/^\S+@\S+\.\S+$/.test(submittedEmail)) {
+      setMsg(copy('footer.invalidEmail', 'Entrez un e-mail valide.', 'Enter a valid email.'));
       return;
     }
-    setMsg(i18n.language.startsWith("fr") ? "Merci ! Nous revenons vers vous rapidement." : "Thanks! We’ll get back to you soon.");
-    setEmail("");
+    if (loading) return;
+    setLoading(true); setMsg('');
+    const result = await sendEmail({ email: submittedEmail, message: locale === 'fr' ? 'Demande de contact depuis le site.' : 'Contact enquiry from the website.' }, 'Contact');
+    setLoading(false);
+    if (result.success) { setMsg(copy('footer.sent', 'Votre demande a bien été envoyée.', 'Your enquiry has been sent.')); setEmail(''); }
+    else setMsg(copy('footer.failed', 'Envoi indisponible. Contactez-nous directement par e-mail ou par téléphone.', 'Unable to send. Please contact us directly by email or phone.'));
   };
 
   return (
@@ -25,15 +37,13 @@ export default function Footer() {
         {/* LEFT: social + short message */}
         <div className="space-y-6">
           <p className="max-w-sm leading-relaxed font-semibold text-[14px]">
-            {i18n.language.startsWith("fr")
-              ? "Réservez votre séjour dans notre riad authentique."
-              : "Book your stay in our authentic riad."}
+            {copy('footer.intro', 'Réservez votre séjour dans notre riad authentique.', 'Book your stay in our authentic riad.')}
           </p>
 
           <div className="flex items-center ml-6 w-full gap-6">
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/riad4jardins/"
+              href={settings.instagram}
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"
@@ -48,7 +58,7 @@ export default function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/company/riad-4-jardins/?viewAsMember=true"
+              href={settings.linkedin}
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
@@ -63,45 +73,46 @@ export default function Footer() {
 
         {/* MIDDLE: Contact */}
         <div className="space-y-4">
-          <h3 className="font-serif text-4xl text-white font-bold">Contact</h3>
-          <p className="py-3">+212-808-653-506</p>
+          <h2 className="font-serif text-4xl text-white font-bold">{copy('footer.contact', 'Contact', 'Contact')}</h2>
+          <p className="py-3"><a href={`tel:${settings.phone}`}>{settings.phoneDisplay}</a></p>
+          {settings.streetAddress && <p>{settings.streetAddress}, Marrakech</p>}
           <a
-            href="mailto:riad4jardins@gmail.com"
+            href={`mailto:${settings.email}`}
             className="underline underline-offset-4 decoration-white/60 hover:decoration-white"
           >
-            riad4jardins@gmail.com
+            {settings.email}
           </a>
         </div>
 
         {/* RIGHT: Email form */}
-        <form onSubmit={onSubmit} className="space-y-3">
+        <form id="footer-form" action={`mailto:${settings.email}`} method="post" encType="text/plain" onSubmit={onSubmit} className="space-y-3">
           <label htmlFor="footerEmail" className="block text-lg font-semibold">
-            {i18n.language.startsWith("fr") ? "Votre adresse e-mail ici" : "Your email address here"}
+            {copy('footer.emailLabel', 'Votre adresse e-mail', 'Your email address')}
           </label>
           <input
             id="footerEmail"
+            name="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder={i18n.language.startsWith("fr") ? "Entrez votre e-mail valide" : "Enter a valid email"}
+            placeholder={copy('footer.emailPlaceholder', 'Entrez votre e-mail valide', 'Enter a valid email')}
             className="w-full rounded-md bg-white text-brand-charcoal px-4 py-3 text-[16px] outline-none focus:ring-2 focus:ring-brand-gold"
             required
           />
           <button
             type="submit"
+            disabled={loading}
             className="inline-block px-8 py-3 rounded-full bg-[#2F241E] text-white font-semibold hover:opacity-95 transition"
           >
-            {t("footer.cta")}
+            {loading ? copy('footer.sending', 'Envoi…', 'Sending…') : t("footer.cta")}
           </button>
-          {msg && <p className="text-sm opacity-90 mt-1">{msg}</p>}
+          {msg && <p role="status" className="text-sm opacity-90 mt-1">{msg}</p>}
         </form>
       </div>
       <div className="mx-auto max-w-6xl px-6 pb-8">
         <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-sm font-semibold">
-            {i18n.language.startsWith("fr")
-              ? "Paiement par carte bancaire"
-              : "Card payments"}
+            {copy('footer.payments', 'Paiement par carte bancaire', 'Card payments')}
           </p>
           <ul className="flex flex-wrap items-center gap-3" aria-label={i18n.language.startsWith("fr") ? "Moyens de paiement" : "Payment methods"}>
             {[
@@ -123,12 +134,12 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        <div className="pt-6 text-xs">
-          <Link to="/conditions-reservation" className="underline underline-offset-4">
-            {i18n.language.startsWith("fr")
-              ? "Conditions de réservation et de paiement"
-              : "Booking and payment conditions"}
-          </Link>
+        <div className="pt-6 text-xs flex flex-wrap items-center justify-between gap-4">
+          <nav aria-label={copy('footer.informationNav', 'Informations pratiques', 'Practical information')} className="flex flex-wrap gap-4">
+            <a href={pagePath('contact', locale)} className="underline underline-offset-4">{copy('footer.contactLink', 'Contact & accès', 'Contact & directions')}</a>
+            <a href={pagePath('conditions', locale)} className="underline underline-offset-4">{copy('footer.conditionsLink', 'Conditions de réservation', 'Booking conditions')}</a>
+          </nav>
+          <p>Developed by <a href="https://www.hospitalitywebservices.com/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">HWS</a></p>
         </div>
       </div>
     </footer>

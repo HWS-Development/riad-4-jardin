@@ -1,9 +1,10 @@
 import { FaWhatsapp } from "react-icons/fa";
+import { useContent } from '../content/ContentContext.jsx';
 
 export default function WhatsAppFab() {
-  const phone = "212718919926"; // change this to your WhatsApp number
-  const message = "Hello! I'd like to get more information about your riad.";
-  const url = `https://api.whatsapp.com/send/?phone=${phone}&text&type=phone_number&app_absent=0`;
+  const { settings, locale } = useContent();
+  const message = locale === 'fr' ? 'Bonjour, je souhaite des informations sur le Riad 4 Jardins.' : 'Hello, I would like information about Riad 4 Jardins.';
+  const url = `https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

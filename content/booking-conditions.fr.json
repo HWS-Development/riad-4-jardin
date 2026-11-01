@@ -3,6 +3,20 @@
   "locale": "fr",
   "title": "Conditions de réservation et de paiement",
   "updatedAt": "2026-10-28",
+  "approval": {
+    "status": "client_confirmed",
+    "sourceDocument": "CONDITIONS DE RÉSERVATION .docx",
+    "notes": "Texte confirmé par le client. Couverture du modèle et fiche de validation interne exclues. Corrections de ponctuation et de grammaire uniquement, sans modification des règles tarifaires."
+  },
+  "property": {
+    "name": "Riad 4 Jardins",
+    "operator": "Riad 4 Jardins",
+    "streetAddress": "6 Derb Arset Aouzal",
+    "city": "Marrakech",
+    "postalCode": "40000",
+    "phone": "+212808653506",
+    "email": "info@riad4jardins.com"
+  },
   "sections": [
     {
       "id": "reservation",
