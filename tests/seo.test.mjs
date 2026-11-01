@@ -94,7 +94,7 @@ test('sitemap and robots contain exactly the canonical localized routes', async 
     assert(redirects.includes(`https://${host}/* https://riad4jardins.com/:splat 301!`));
   }
   const vercel = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
-  assert.deepEqual(vercel.redirects.slice(0, 3).map(rule => rule.has[0].value), ['riad4jardin.com', 'www.riad4jardin.com', 'www.riad4jardins.com']);
+  assert.deepEqual(vercel.redirects.slice(0, 3).map(rule => rule.has[0].value), ['riad4jardin\\.com', 'www\\.riad4jardin\\.com', 'www\\.riad4jardins\\.com']);
   assert(vercel.redirects.slice(0, 3).every(rule => rule.destination === 'https://riad4jardins.com/:path*' && rule.permanent));
 });
 

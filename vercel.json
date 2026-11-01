@@ -4,9 +4,9 @@
   "outputDirectory": "dist",
   "trailingSlash": true,
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "riad4jardin.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.riad4jardin.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
-    { "source": "/:path*", "has": [{ "type": "host", "value": "www.riad4jardins.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "riad4jardin\\.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www\\.riad4jardin\\.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www\\.riad4jardins\\.com" }], "destination": "https://riad4jardins.com/:path*", "permanent": true },
     { "source": "/", "destination": "/fr/", "permanent": true },
     { "source": "/index.html", "destination": "/fr/", "permanent": true },
     { "source": "/chambres", "destination": "/fr/chambres/", "permanent": true },
