@@ -24,6 +24,7 @@ test('route and locale mapping never sends an equivalent page to the home', () =
   assert.throws(() => pagePath('invented', 'en'));
   const redirects = new Map(legacyRedirects());
   assert.equal(redirects.get('/chambres'), '/fr/chambres/');
+  assert.equal(redirects.get('/home2/'), '/fr/');
   for (const [from, to] of redirects) { assert.notEqual(from, to); assert(!redirects.has(to), `Redirect chain ${from}`); }
 });
 
@@ -95,7 +96,19 @@ test('sitemap and robots contain exactly the canonical localized routes', async 
   }
   const vercel = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
   assert.deepEqual(vercel.redirects.slice(0, 3).map(rule => rule.has[0].value), ['riad4jardin\\.com', 'www\\.riad4jardin\\.com', 'www\\.riad4jardins\\.com']);
-  assert(vercel.redirects.slice(0, 3).every(rule => rule.destination === 'https://riad4jardins.com/:path*' && rule.permanent));
+  assert(vercel.redirects.slice(0, 3).every(rule => rule.destination === 'https://riad4jardins.com/:path*'));
+  assert(vercel.redirects.slice(0, 2).every(rule => rule.statusCode === 301));
+  assert(vercel.redirects[2].permanent);
+  const localizedPaths = new Set(pages.flatMap(page => locales.flatMap(locale => [page.paths[locale], page.paths[locale].slice(0, -1)])));
+  const aliases = new Map(vercel.redirects.filter(rule => !rule.has).map(rule => [rule.source, rule]));
+  for (const [from, to] of legacyRedirects()) {
+    if (localizedPaths.has(from)) continue; // Vercel normalizes localized trailing slashes itself.
+    const rule = aliases.get(from);
+    assert(rule, `Missing Vercel legacy redirect: ${from}`);
+    assert.equal(rule.destination, to);
+    assert.equal(rule.statusCode, 301);
+    assert(localizedPaths.has(to), `Legacy redirect must end at an existing page: ${from}`);
+  }
 });
 
 test('generated responsive photos really are WebP and are never upscaled', async () => {

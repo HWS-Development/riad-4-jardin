@@ -25,7 +25,9 @@
 | Domaine canonique confirmé | `https://riad4jardins.com` |
 | Studio CMS | hébergement Sanity gratuit distinct du site |
 
-Le `vercel.json` est corrigé : redirections 301 par hôte avant les redirections de migration de chemins, slash final, cache des assets hashés, pas de réécriture SPA. Le même dossier `dist` contient les règles de domaine dans `_redirects`, `_headers` et `404.html` pour Cloudflare Pages.
+Le `vercel.json` applique des 301 depuis les deux hôtes de l’ancien domaine et une redirection permanente 308 pour `www.riad4jardins.com`, avant les 301 de migration de chemins. Les anciennes routes sont couvertes avec et sans slash final, dont `/home2/` vers `/fr/`. Le même dossier `dist` contient les règles de domaine dans `_redirects`, `_headers` et `404.html` pour Cloudflare Pages.
+
+Les redirections configurées dans **Vercel → Domains** prennent le relais avant celles du déploiement : régler également `riad4jardin.com` et `www.riad4jardin.com` en **301** vers `riad4jardins.com`. Vérifier les chaînes complètes jusqu’à une réponse 200, notamment `http://riad4jardin.com/`, `/home2/` et `/services-activites`, ainsi que la conservation des paramètres. Le passage HTTP → HTTPS peut ajouter une 308 automatique de la plateforme.
 
 ## Variables à configurer côté hébergeur
 

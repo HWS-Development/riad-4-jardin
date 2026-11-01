@@ -29,7 +29,7 @@ export function resolveRoute(pathname) {
 
 export function legacyRedirects() {
   return [
-    ['/', '/fr/'], ['/index.html', '/fr/'],
+    ['/', '/fr/'], ['/index.html', '/fr/'], ['/home2', '/fr/'], ['/home2/', '/fr/'],
     ...pages.filter(page => page.legacy).flatMap(page => [[page.legacy, page.paths.fr], [`${page.legacy}/`, page.paths.fr]]),
     ...pages.flatMap(page => locales.map(locale => [page.paths[locale].slice(0, -1), page.paths[locale]])),
   ];
