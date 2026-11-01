@@ -46,7 +46,7 @@ La fréquence n’est pas un objectif en soi. Les titres, résumés, description
 
 Search Console : `riad4jardins.com` est confirmé comme canonique. Après déploiement, certificats et contrôle des 301, soumettre `https://riad4jardins.com/sitemap.xml`, inspecter les routes FR/EN, puis lancer le changement d’adresse depuis la propriété `riad4jardin.com`. Conserver les redirections au moins un an et idéalement sans date de fin.
 
-GA4 : le tag du domaine principal `G-D3T47X1HLY` est chargé sur toutes les pages finales. Le tag historique `G-18R3YDQJ1B` reste associé à `riad4jardin.com` mais n’est pas chargé sur le nouveau domaine ; les anciennes URLs répondent 301 et ne peuvent donc pas exécuter un tag. Les événements de réservation sortante et demandes de contact restent à définir selon le consentement. Un clic sur HotelRunner n’est pas une réservation confirmée.
+GA4 : le tag du domaine principal `G-D3T47X1HLY` est chargé sur toutes les pages de production, mais exclu des builds de prévisualisation pour ne pas polluer les données. Le tag historique `G-18R3YDQJ1B` reste associé à `riad4jardin.com` mais n’est pas chargé sur le nouveau domaine ; les anciennes URLs répondent 301 et ne peuvent donc pas exécuter un tag. Les événements de réservation sortante et demandes de contact restent à définir selon le consentement. Un clic sur HotelRunner n’est pas une réservation confirmée.
 
 ## Points à confirmer
 

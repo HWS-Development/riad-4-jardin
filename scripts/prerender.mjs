@@ -37,7 +37,7 @@ async function output(path, destination) {
     preloads.push(`<link rel="preload" as="image" type="image/${hero.avif ? 'avif' : 'webp'}" href="${mobile.src}" imagesrcset="${escapeHtml(mobile.srcSet)}" imagesizes="100vw" media="(max-width: 767px)" fetchpriority="high">`);
     preloads.push(`<link rel="preload" as="image" type="image/${hero.avif ? 'avif' : 'webp'}" href="${desktop.src}" imagesrcset="${escapeHtml(desktop.srcSet)}" imagesizes="${escapeHtml(prioritySizes[route.id] || '100vw')}" media="(min-width: 768px)" fetchpriority="high">`);
   } else if (hero?.avif && prioritySizes[route.id]) preloads.push(`<link rel="preload" as="image" type="image/avif" href="${hero.avif.src}" imagesrcset="${escapeHtml(hero.avif.srcSet)}" imagesizes="${escapeHtml(prioritySizes[route.id])}" fetchpriority="high">`);
-  const head = seoHead(route, data, snapshot, { origin, preview, googleVerification: process.env.GOOGLE_SITE_VERIFICATION, googleTagId: site.googleTagId }) + preloads.join('');
+  const head = seoHead(route, data, snapshot, { origin, preview, googleVerification: process.env.GOOGLE_SITE_VERIFICATION, googleTagId: preview ? '' : site.googleTagId }) + preloads.join('');
   if (route.id !== 'notFound') {
     const title = head.match(/<title>(.*?)<\/title>/s)[1];
     const description = head.match(/<meta name="description" content="(.*?)">/s)[1];
