@@ -68,3 +68,5 @@ const idle = async () => {
 };
 if (document.readyState === 'complete') idle();
 else window.addEventListener('load', idle, { once: true });
+
+import '@hws/cookie-consent';

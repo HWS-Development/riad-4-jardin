@@ -60,8 +60,8 @@ export function seoHead(route, data, snapshot, { origin, preview = false, google
   return `<title>${escapeHtml(title)}</title>
 <meta name="description" content="${escapeHtml(description)}">
 ${googleVerification ? `<meta name="google-site-verification" content="${escapeHtml(googleVerification)}">` : ''}
-${googleTagId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagId)}"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${safeJson(googleTagId)});</script>` : ''}
+${googleTagId ? `<script type="text/plain" data-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagId)}"></script>
+<script type="text/plain" data-category="analytics">window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',${safeJson(googleTagId)},{allow_google_signals:false,allow_ad_personalization_signals:false});</script>` : ''}
 <meta name="robots" content="${preview || !indexable ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}">
 ${indexable ? `<link rel="canonical" href="${url}">
 ${['fr', 'en', 'x-default'].map(locale => `<link rel="alternate" hreflang="${locale}" href="${origin}${pagePath(route.id, locale === 'x-default' ? 'fr' : locale)}">`).join('\n')}` : ''}
